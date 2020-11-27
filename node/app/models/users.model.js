@@ -15,26 +15,11 @@ module.exports = (sequelize, Sequelize) => {
         password: {
             type: Sequelize.STRING, allowNull: false
         },
-        lastSpotId: {
-            type: Sequelize.STRING,
-            allowNull: true,
-            // references: {model: sequelize.models.spot, key: 'spotId'}
-        },
-        askLastSpot: {
-            type: Sequelize.BOOLEAN,
-            allowNull: false
-        },
-        userTemperature: {
+        ventilationLevel: {
             type: Sequelize.INTEGER
         },
-        userHumidity: {
+        heatingLevel: {
             type: Sequelize.INTEGER
-        },
-        userAirflow: {
-            type: Sequelize.INTEGER
-        },
-        leavingTime: {
-            type: Sequelize.TIME
         }
     });
 
