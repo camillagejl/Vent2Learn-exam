@@ -7,7 +7,8 @@ import {ZoneOverviewModule} from "./zone-overview/zone-overview.module";
 const routes: Routes = [
   {path: 'login', component: LoginViewComponent},
   {path: 'vent-selection', component: VentSelectionViewComponent},
-  {path: 'zone-overview', component: ZoneOverviewModule}
+  {path: 'zone-overview', component: ZoneOverviewModule},
+  {path: '**', redirectTo: '/login'} // When no route is defined, the app will display the login page.
 ];
 
 @NgModule({

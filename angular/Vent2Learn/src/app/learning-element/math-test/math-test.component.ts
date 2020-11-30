@@ -9,11 +9,11 @@ export class MathTestComponent implements OnInit {
 
   users = [
     {
-      ventilation: 10,
+      ventilation: 1,
       heating: 3
     },
     {
-      ventilation: 10,
+      ventilation: 4,
       heating: 5
     },
     {

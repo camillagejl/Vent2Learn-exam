@@ -1,0 +1,41 @@
+.app_title {
+  font-weight: bold;
+  text-align: center;
+
+  &::first-letter {
+    color: rgb(var(--main-color-500));
+  }
+
+  padding-bottom: 5%;
+  font-size: 3rem;
+}
+
+.log-in-btn {
+  background-color: #6ea81a;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.top-padding-button {
+  margin-top: 0.5rem;
+}
+
+
+form {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.form-container {
+  display: block;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .app_title {
+    padding-bottom: 15%;
+  }
+
+}

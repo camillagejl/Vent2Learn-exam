@@ -1,1 +1,129 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Global CSS custom properties (variables)
+:root {
+
+  /* ----- COLOR VARIABLES ----- */
+
+  /*
+  These color variables are in RGB, so it's possible to add transparency to them.
+  - To use a color, put it in a rgb code, e.g.:
+  background-color: rgb(var(--main-color-500)).
+  - If you want to add opacity to it, use rgba and add the opacity, e.g.:
+  background-color: rgba(var(--main-color-500), .5).
+  */
+
+  --main-color-700: 65, 106, 5;
+  --main-color-500: 110, 168, 26; // Main color from Vent2U website
+  --main-color-400: 155, 187, 109;
+  --main-color-300: 197, 222, 160;
+
+  --secondary-color-500: 213, 181, 107;
+
+  --grey-900: 58, 58, 58;
+  --grey-800: 112, 112, 112;
+  --grey-500: 151, 151, 151;
+  --grey-200: 214, 214, 214;
+  --grey-100: 243, 243, 243; // Main background color
+
+
+  /* ----- FONT VARIABLES ----- */
+
+  /* Main font: Raleway
+  https://fonts.google.com/specimen/Raleway?sidebar.open=true&selection.family=Raleway:ital,wght@0,400;0,500;0,700;1,400
+  Our current styles: Regular 400, Regular 400 Italic, Medium 500, Bold 700 */
+  --main-font-family: 'Raleway', sans-serif;
+
+
+  /* ----- BOX SHADOWS ----- */
+
+  --main-box-shadow: 0 3px 6px rgba(100, 100, 100, 0.16), 0 3px 6px rgba(100, 100, 100, 0.23);
+  --main-box-shadow-revert: 0 -3px 6px rgba(100, 100, 100, 0.16), 0 -3px 6px rgba(100, 100, 100, 0.23);
+
+
+  /* ----- OTHER STYLING VARIABLES ----- */
+
+  // Main margin/padding for the app
+  --main-margin: 24px;
+}
+
+
+/* ----- GENERAL STYLINGS ----- */
+
+html, body {
+  min-height: 100%;
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+app-root {
+  font-family: var(--main-font-family);
+}
+
+hr {
+  margin: calc(var(--main-margin)*2) 0;
+  border: 1px solid rgba(var(--main-color-400), 0.5)
+}
+
+.dialog_heading {
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.mat-dialog-content {
+  overflow: visible !important;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize::first-letter {
+  text-transform: capitalize;
+}
+
+.align_right {
+  text-align: right;
+}
+
+.flex_1 {
+  flex: 1;
+}
+
+.flex_2 {
+  flex: 2;
+}
+
+.flex_3 {
+  flex: 3;
+}
+
+.full_width {
+  width: 100%;
+}
+
+.grid_2_col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: calc(var(--main-margin) / 2)
+}
+
+.icon_small {
+  max-width: 20px;
+  width: fit-content;
+}
+
+
+.icon_medium {
+  max-width: 25px;
+  width: fit-content;
+}
+
+.icon_large {
+  max-width: 45px;
+  width: fit-content;
+}

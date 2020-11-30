@@ -1,1 +1,39 @@
-This is the login view!
+<div class="app_title">
+  Vent2Learn
+</div>
+<div class="form-container">
+  <form class="grid_2_col" action="auth" method="POST" [formGroup]="formGroup" (ngSubmit)="submitForm()">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" [(ngModel)]="userEmail"
+             placeholder="Ex. JaneDoe@zealand.dk">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" [(ngModel)]="userPassword"
+             placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
+        Please enter a valid password
+      </mat-error>
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-card-actions>
+      <button mat-raised-button type="submit" color="primary" class="top-padding-button full_width" (click)="submitForm()">LOG
+        IN</button>
+    </mat-card-actions>
+  </form>
+</div>
+
+<hr>
+
+<button mat-button class="full_width uppercase" color="primary">Don't have, or forgot your
+  login?</button>
