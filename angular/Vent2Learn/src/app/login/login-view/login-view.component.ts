@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import {UsersService} from "../../shared-services/users.service";
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -17,30 +18,56 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginViewComponent implements OnInit {
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-  hide = true;
+  users = {};
 
   userEmail: string;
   userPassword: string;
 
+  hidePassword = true;
+
+
+  constructor(
+    private usersService: UsersService
+  ) {
+  }
+
+  ngOnInit() {
+    this.retrieveUsers();
+  }
+
+
+  // ----- FORM CONTROL -----
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
   passwordFormControl = new FormControl('', [
     Validators.required,
   ]);
-
-  matcher = new MyErrorStateMatcher();
-
-  constructor() {
-  }
 
   formGroup = new FormControl({
     email: this.emailFormControl,
     password: this.passwordFormControl
   });
 
-  ngOnInit(): void {
+  matcher = new MyErrorStateMatcher();
+
+  // ----- -----
+
+
+  // ----- USER DATA -----
+
+  retrieveUsers() {
+    this.usersService.getAll()
+      .subscribe(
+        data => {
+          this.users = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   submitForm() {
