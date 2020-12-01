@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import {UsersService} from "../../shared-services/users.service";
+import {Router} from "@angular/router";
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -18,7 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginViewComponent implements OnInit {
 
-  users = {};
+  users: any;
 
   userEmail: string;
   userPassword: string;
@@ -27,7 +28,8 @@ export class LoginViewComponent implements OnInit {
 
 
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private router: Router
   ) {
   }
 
@@ -71,8 +73,14 @@ export class LoginViewComponent implements OnInit {
   }
 
   submitForm() {
+    let userId;
 
-    console.log("Submitting");
+    this.users.forEach(user => {
+      if (this.userEmail === user.email && this.userPassword === user.password) {
+        console.log("It's a match!");
+        this.router.navigate(['/vent-selection', user.userId]);
+      }
+    })
 
   }
 

@@ -6,6 +6,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {AppRoutingModule} from "../app-routing.module";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule
   ]
 })
 export class LoginModule {
