@@ -2,22 +2,17 @@ mat-toolbar {
   display: flex;
   justify-content: space-between;
   box-shadow: var(--main-box-shadow-revert);
+  background-color: rgb(var(--main-color-600));
   padding: 0;
 }
 
-.back_button,
-.info_button {
-  display: flex;
-  justify-content: flex-start;
-  color: rgb(var(--secondary-color-500));
-}
-
-.info_button {
-  display: flex;
-  justify-content: flex-end;
-  color: rgb(var(--secondary-color-500));
-}
-
 button {
+  background-color: transparent;
+  border: none;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--main-color-100));
 }
