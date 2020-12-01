@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit {
   title = 'Vent2Learn';
 
-  displayTopToolbar = true;
+  displayToolbars = true;
 
   constructor(
     private location: Location,
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe(event => {
       // Checking if the top nav should be displayed
-      this.displayTopToolbar = this.location.path() !== '/login';
+      this.displayToolbars = this.location.path() !== '/login';
     });
   }
 
