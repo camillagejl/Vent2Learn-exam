@@ -1,3 +1,8 @@
+<!-- Top nav does not show on the login page.
+More pages can be added in app.component.ts -->
+
+<app-top-toolbar *ngIf="displayTopToolbar"></app-top-toolbar>
+
 <div class="router-outlet-container">
   <router-outlet></router-outlet>
 </div>

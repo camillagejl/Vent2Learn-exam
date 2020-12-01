@@ -1,0 +1,15 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: var(--main-box-shadow);
+}
+
+.app_title {
+  font-weight: bold;
+  text-align: center;
+
+  &::first-letter {
+    color: rgb(var(--main-color-500));
+  }
+
+}

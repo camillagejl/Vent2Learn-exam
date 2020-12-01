@@ -6,6 +6,9 @@ import { SettingSliderComponent } from './setting-slider/setting-slider.componen
 
 @NgModule({
   declarations: [SettingSliderComponent],
+  exports: [
+    SettingSliderComponent
+  ],
   imports: [
     CommonModule
   ]
