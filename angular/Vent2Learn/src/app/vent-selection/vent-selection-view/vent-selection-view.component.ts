@@ -24,11 +24,11 @@ export class VentSelectionViewComponent implements OnInit {
   ventControl = new FormControl();
 
   constructor(
+    private router: Router,
     private _route: ActivatedRoute,
     private usersService: UsersService,
     private roomsService: RoomsService,
-    private ventsService: VentsService,
-    private router: Router
+    private ventsService: VentsService
   ) {
   }
 

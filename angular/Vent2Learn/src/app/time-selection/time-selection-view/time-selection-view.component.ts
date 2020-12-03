@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
+import {UsersService} from "../../shared-services/users.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-time-selection-view',
@@ -7,6 +9,9 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./time-selection-view.component.scss']
 })
 export class TimeSelectionViewComponent implements OnInit {
+
+  userId;
+  user;
 
   timeStamps = [
     '00:00',
@@ -111,10 +116,46 @@ export class TimeSelectionViewComponent implements OnInit {
 
   timeControl = new FormControl();
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private _route: ActivatedRoute,
+    private usersService: UsersService
+  ) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this._route.params.subscribe(params => {
+      this.userId = params["userId"];
+    });
+
+    this.retrieveUser();
   }
 
+  retrieveUser() {
+    this.usersService.get(this.userId)
+      .subscribe(
+        data => {
+          this.user = data;
+          this.selectedTime = this.user.leavingTime.substring(0,5);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  updateUserLeavingTime() {
+    this.usersService.update(this.userId, {
+      leavingTime: this.selectedTime
+    })
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        });
+
+    this.router.navigate(['/time-selection', this.userId]);
+
+  }
 }
