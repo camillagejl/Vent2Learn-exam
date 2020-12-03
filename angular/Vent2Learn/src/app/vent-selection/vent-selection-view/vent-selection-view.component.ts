@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {RoomsService} from "../../shared-services/rooms.service";
 import {FormControl} from "@angular/forms";
 import {VentsService} from "../../shared-services/vents.service";
+import {ActivatedRoute} from "@angular/router";
+import {UsersService} from "../../shared-services/users.service";
 
 @Component({
   selector: 'app-vent-selection-view',
@@ -10,8 +12,11 @@ import {VentsService} from "../../shared-services/vents.service";
 })
 export class VentSelectionViewComponent implements OnInit {
 
-  rooms: any;
-  vents: any;
+  userId;
+  user;
+
+  rooms;
+  vents;
   selectedRoom = null;
   selectedVent = null;
 
@@ -19,14 +24,33 @@ export class VentSelectionViewComponent implements OnInit {
   ventControl = new FormControl();
 
   constructor(
+    private _route: ActivatedRoute,
+    private usersService: UsersService,
     private roomsService: RoomsService,
-    private ventsService: VentsService
+    private ventsService: VentsService,
   ) {
   }
 
   ngOnInit() {
+    this._route.params.subscribe(params => {
+      this.userId = params["user"];
+    });
+
     this.retrieveRooms();
     this.retrieveVents();
+    this.retrieveUser();
+  }
+
+  retrieveUser() {
+    this.usersService.get(this.userId)
+      .subscribe(
+        data => {
+          this.user = data;
+          console.log("USER", data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   retrieveRooms() {
@@ -59,6 +83,17 @@ export class VentSelectionViewComponent implements OnInit {
   updateSelectedVent() {
     console.log("updating room!");
     console.log(this.selectedRoom);
-  }
 
+    this.usersService.update(this.userId, {
+      ventId: this.selectedVent
+    })
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        });
+
+  }
 }
