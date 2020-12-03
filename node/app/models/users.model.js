@@ -15,6 +15,9 @@ module.exports = (sequelize, Sequelize) => {
         password: {
             type: Sequelize.STRING, allowNull: false
         },
+        ventId: {
+            type: Sequelize.INTEGER
+        },
         ventilationLevel: {
             type: Sequelize.INTEGER
         },

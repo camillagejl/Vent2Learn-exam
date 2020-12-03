@@ -4,7 +4,6 @@
       placeholder="Select room"
       [formControl]="roomControl"
       [(ngModel)]="selectedRoom"
-      (ngModelChange)="updateSelectedRoom()"
     >
 
       <ng-container *ngFor="let room of rooms">
@@ -23,7 +22,6 @@
       placeholder="Select vent"
       [formControl]="ventControl"
       [(ngModel)]="selectedVent"
-      (ngModelChange)="updateSelectedVent()"
     >
 
       <ng-container *ngFor="let vent of vents">
@@ -35,3 +33,10 @@
     </mat-select>
   </mat-form-field>
 </mat-card>
+
+<button
+  mat-raised-button
+  (click)="updateUserVent()"
+>
+  Next
+</button>

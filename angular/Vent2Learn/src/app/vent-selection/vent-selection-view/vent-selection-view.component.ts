@@ -75,15 +75,7 @@ export class VentSelectionViewComponent implements OnInit {
         });
   }
 
-  updateSelectedRoom() {
-    console.log("updating room!");
-    console.log(this.selectedRoom);
-  }
-
-  updateSelectedVent() {
-    console.log("updating room!");
-    console.log(this.selectedRoom);
-
+  updateUserVent() {
     this.usersService.update(this.userId, {
       ventId: this.selectedVent
     })
@@ -94,6 +86,5 @@ export class VentSelectionViewComponent implements OnInit {
         error => {
           console.log(error);
         });
-
   }
 }
