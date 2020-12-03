@@ -47,7 +47,15 @@ export class VentSelectionViewComponent implements OnInit {
       .subscribe(
         data => {
           this.user = data;
-          console.log("USER", data);
+          this.selectedVent = this.user.ventId;
+
+          this.vents.forEach(vent => {
+            if (vent.ventId === this.selectedVent) {
+              this.selectedRoom = vent.roomId;
+            }
+
+          });
+
         },
         error => {
           console.log(error);
