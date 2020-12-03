@@ -1,1 +1,37 @@
-<p>vent-selection-view works!</p>
+<mat-card>
+  <mat-form-field>
+    <mat-select
+      placeholder="Select room"
+      [formControl]="roomControl"
+      [(ngModel)]="selectedRoom"
+      (ngModelChange)="updateSelectedRoom()"
+    >
+
+      <ng-container *ngFor="let room of rooms">
+        <mat-option [value]="room.roomId">
+          {{room.roomName}}
+        </mat-option>
+      </ng-container>
+
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+
+<mat-card>
+  <mat-form-field>
+    <mat-select [disabled]="!selectedRoom"
+      placeholder="Select vent"
+      [formControl]="ventControl"
+      [(ngModel)]="selectedVent"
+      (ngModelChange)="updateSelectedVent()"
+    >
+
+      <ng-container *ngFor="let vent of vents">
+        <mat-option *ngIf="vent.roomId === selectedRoom" [value]="vent.ventId">
+          {{vent.ventNumber}}
+        </mat-option>
+      </ng-container>
+
+    </mat-select>
+  </mat-form-field>
+</mat-card>

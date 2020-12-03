@@ -29,8 +29,8 @@ export class AirCalculationsService {
     // of each user's setting. The average for both will be between 0 and 10, which corresponds to that value of
     // degrees.
     users.forEach(user => {
-      userVentilation = userVentilation + user.ventilation;
-      userHeating = userHeating + user.heating;
+      userVentilation = userVentilation + user.ventilationLevel;
+      userHeating = userHeating + user.heatingLevel;
     });
     userVentilation = userVentilation / users.length;
     userHeating = userHeating / users.length;
@@ -71,7 +71,7 @@ export class AirCalculationsService {
 
     // For each user in the array, the userVentilation is added up.
     users.forEach(user => {
-      userVentilation = userVentilation + user.ventilation;
+      userVentilation = userVentilation + user.ventilationLevel;
     });
 
     // This line starts out by finding the average of all users' ventilation setting.

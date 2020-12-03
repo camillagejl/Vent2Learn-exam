@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AirCalculationsService} from "../../shared-services/air-calculations.service";
+import {UsersService} from "../../shared-services/users.service";
 
 @Component({
   selector: 'app-math-test',
@@ -8,31 +9,32 @@ import {AirCalculationsService} from "../../shared-services/air-calculations.ser
 })
 export class MathTestComponent implements OnInit {
 
-  users = [
-    {
-      ventilation: 1,
-      heating: 3
-    },
-    {
-      ventilation: 4,
-      heating: 5
-    },
-    {
-      ventilation: 10,
-      heating: 1
-    },
-    {
-      ventilation: 9,
-      heating: 7
-    }
-  ];
+  users: any;
 
-  constructor(private airCalculationsService: AirCalculationsService) {
+  constructor(
+    private usersService: UsersService,
+    private airCalculationsService: AirCalculationsService) {
   }
 
   ngOnInit() {
-    console.log(`Room temperature: ${this.airCalculationsService.calculateRoomTemperature(this.users)}°C`);
-    console.log(`Room humidity: ${this.airCalculationsService.calculateRoomHumidity(this.users)}%`);
+    this.retrieveUsers();
+  }
+
+  console(logging) {
+    console.log(logging);
+  }
+
+  retrieveUsers() {
+    this.usersService.getAll()
+      .subscribe(
+        data => {
+          this.users = data;
+          console.log(`Room temperature: ${this.airCalculationsService.calculateRoomTemperature(this.users)}°C`);
+          console.log(`Room humidity: ${this.airCalculationsService.calculateRoomHumidity(this.users)}%`);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
 }
