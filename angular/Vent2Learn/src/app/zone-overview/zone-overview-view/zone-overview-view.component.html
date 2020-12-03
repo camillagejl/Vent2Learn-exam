@@ -1,1 +1,56 @@
-<p>zone-overview-view works!</p>
+Hello!
+<br>
+
+<br>
+<div *ngIf="room && vent">
+Your current zone: {{room.roomName}}, vent {{vent.ventNumber}}
+</div>
+<div *ngIf="user">
+Your leaving time: {{ user.leavingTime }}
+</div>
+
+<br>
+<div *ngIf="room">
+Current zone temperature: {{zoneTemperature}}
+<br>
+Current zone humidity: {{zoneHumidity}}
+</div>
+<br>
+
+<br>
+<div *ngIf="user">
+Your ventilation level: {{user.ventilationLevel}}
+<br>
+Your heating level: {{user.heatingLevel}}
+<br>
+</div>
+
+<br>
+Tooltip:
+<br>
+<br>
+
+<p>Heating Level</p>
+<br>
+<mat-slider
+  tickInterval="1"
+  step="1"
+  min="0"
+  max="10"
+  [(ngModel)]="userHeatingLevel"
+  (ngModelChange)="updateUserLevel('heatingLevel', 'userHeatingLevel')"
+>
+</mat-slider>
+<br>
+
+<p>Ventilation Level</p>
+<br>
+<mat-slider
+  tickInterval="1"
+  step="1"
+  min="0"
+  max="10"
+  [(ngModel)]="userVentilationLevel"
+  (ngModelChange)="updateUserLevel('ventilationLevel', 'userVentilationLevel')"
+>
+</mat-slider>

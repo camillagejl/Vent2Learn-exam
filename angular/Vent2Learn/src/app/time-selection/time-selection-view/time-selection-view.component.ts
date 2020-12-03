@@ -155,7 +155,7 @@ export class TimeSelectionViewComponent implements OnInit {
           console.log(error);
         });
 
-    this.router.navigate(['/time-selection', this.userId]);
+    this.router.navigate(['/zone-overview', this.userId]);
 
   }
 }
