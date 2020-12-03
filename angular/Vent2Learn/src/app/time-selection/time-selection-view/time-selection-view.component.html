@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-form-field>
+    <mat-select
+      placeholder="Select time"
+      [formControl]="timeControl"
+      [(ngModel)]="selectedTime"
+    >
+
+      <ng-container *ngFor="let time of this.timeStamps">
+        <mat-option
+          [value]="time"
+        >
+          {{ time }}
+        </mat-option>
+      </ng-container>
+
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+
+<button type="submit"
+        mat-raised-button
+        *ngIf="selectedTime"
+>
+  Next
+</button>

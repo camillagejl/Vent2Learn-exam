@@ -18,6 +18,9 @@ module.exports = (sequelize, Sequelize) => {
         ventId: {
             type: Sequelize.INTEGER
         },
+        leavingTime: {
+            type: Sequelize.TIME
+        },
         ventilationLevel: {
             type: Sequelize.INTEGER
         },

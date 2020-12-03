@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RoomsService} from "../../shared-services/rooms.service";
 import {FormControl} from "@angular/forms";
 import {VentsService} from "../../shared-services/vents.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../shared-services/users.service";
 
 @Component({
@@ -28,12 +28,13 @@ export class VentSelectionViewComponent implements OnInit {
     private usersService: UsersService,
     private roomsService: RoomsService,
     private ventsService: VentsService,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
     this._route.params.subscribe(params => {
-      this.userId = params["user"];
+      this.userId = params["userId"];
     });
 
     this.retrieveRooms();
@@ -86,5 +87,8 @@ export class VentSelectionViewComponent implements OnInit {
         error => {
           console.log(error);
         });
+
+    this.router.navigate(['/time-selection', this.userId]);
+
   }
 }

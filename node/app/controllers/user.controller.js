@@ -17,6 +17,8 @@ exports.create = (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        ventId: req.body.ventId,
+        leavingTime: req.body.leavingTime,
         ventilationLevel: req.body.ventilationLevel,
         heatingLevel: req.body.heatingLevel,
 

@@ -11,6 +11,7 @@ import {VentSelectionModule} from "./vent-selection/vent-selection.module";
 import {ZoneOverviewModule} from "./zone-overview/zone-overview.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavigationModule} from "./navigation/navigation.module";
+import {TimeSelectionModule} from "./time-selection/time-selection.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {NavigationModule} from "./navigation/navigation.module";
     VentSelectionModule,
     ZoneOverviewModule,
     BrowserAnimationsModule,
-    NavigationModule
+    NavigationModule,
+    TimeSelectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

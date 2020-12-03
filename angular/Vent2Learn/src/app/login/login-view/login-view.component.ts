@@ -73,8 +73,6 @@ export class LoginViewComponent implements OnInit {
   }
 
   submitForm() {
-    let userId;
-
     this.users.forEach(user => {
       if (this.userEmail === user.email && this.userPassword === user.password) {
         console.log("It's a match!");

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VentSettingComponent } from './vent-setting.component';
+import { TimeSelectionViewComponent } from './time-selection-view.component';
 
-describe('VentSettingComponent', () => {
-  let component: VentSettingComponent;
-  let fixture: ComponentFixture<VentSettingComponent>;
+describe('TimeSelectionViewComponent', () => {
+  let component: TimeSelectionViewComponent;
+  let fixture: ComponentFixture<TimeSelectionViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VentSettingComponent ]
+      declarations: [ TimeSelectionViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VentSettingComponent);
+    fixture = TestBed.createComponent(TimeSelectionViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
