@@ -1,37 +1,30 @@
-Hello!
+Just a test page that shows all relevant information from the database.
 <br>
 
 <br>
+<b>
 <div *ngIf="room && vent">
-Your current zone: {{room.roomName}}, vent {{vent.ventNumber}}
+  Your current zone: {{room.roomName}}, vent {{vent.ventNumber}}
 </div>
 <div *ngIf="user">
-Your leaving time: {{ user.leavingTime }}
+  Your leaving time: {{ user.leavingTime }}
 </div>
+</b>
 
 <br>
-<div *ngIf="room">
-Current zone temperature: {{zoneTemperature}}
-<br>
-Current zone humidity: {{zoneHumidity}}
+<div *ngIf="zoneHumidity && zoneTemperature">
+  <i>
+    The below are the values we get from the zone democracy. They will update when you pull the sliders.
+  </i>
+  <br>
+  <b>
+  Current zone temperature: {{zoneTemperature}}
+  <br>
+  Current zone humidity: {{zoneHumidity}}
+  </b>
 </div>
 <br>
-
-<br>
-<div *ngIf="user">
-Your ventilation level: {{user.ventilationLevel}}
-<br>
-Your heating level: {{user.heatingLevel}}
-<br>
-</div>
-
-<br>
-Tooltip:
-<br>
-<br>
-
 <p>Heating Level</p>
-<br>
 <mat-slider
   tickInterval="1"
   step="1"
@@ -44,7 +37,6 @@ Tooltip:
 <br>
 
 <p>Ventilation Level</p>
-<br>
 <mat-slider
   tickInterval="1"
   step="1"
@@ -54,3 +46,24 @@ Tooltip:
   (ngModelChange)="updateUserLevel('ventilationLevel', 'userVentilationLevel')"
 >
 </mat-slider>
+
+
+
+<br>
+<div *ngIf="user">
+  <p>
+    The below don't update if you update the values in the slider, only on reload. We can make this work, but I didn't
+    want to spend time on it if we're not going to use it.
+  </p>
+  <b>
+  Your heating level: {{user.heatingLevel}}
+    <br>
+  Your ventilation level: {{user.ventilationLevel}}
+  </b>
+  <br>
+</div>
+
+<br>
+<b>
+Tooltip:
+</b>

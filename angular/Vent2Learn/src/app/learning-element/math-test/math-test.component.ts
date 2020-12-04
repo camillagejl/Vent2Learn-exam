@@ -20,11 +20,9 @@ export class MathTestComponent implements OnInit {
     this.retrieveUsers();
   }
 
-  console(logging) {
-    console.log(logging);
-  }
-
   retrieveUsers() {
+    // Starts out by retrieving all users, and then using the airCalculationsService to find and log the temperature
+    // and humidity. This is a test and is >NOT< zone related! But takes the average from ALL users in the database.
     this.usersService.getAll()
       .subscribe(
         data => {

@@ -19,13 +19,15 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginViewComponent implements OnInit {
 
+  // All users from database will be saved here.
   users: any;
 
+  // Variables that are modeled by the form, to check with the users.
   userEmail: string;
   userPassword: string;
 
+  // Password is hidden by default, and shown/hidden on click.
   hidePassword = true;
-
 
   constructor(
     private usersService: UsersService,
@@ -55,11 +57,10 @@ export class LoginViewComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  // ----- -----
-
 
   // ----- USER DATA -----
 
+  // Retrieves all users, so we can check if the form values match.
   retrieveUsers() {
     this.usersService.getAll()
       .subscribe(
@@ -72,6 +73,8 @@ export class LoginViewComponent implements OnInit {
         });
   }
 
+  // Loops over the users to see if the form values match a user. If they do, the user will be sent to the next page
+  // with the userId of the user as parameter.
   submitForm() {
     this.users.forEach(user => {
       if (this.userEmail === user.email && this.userPassword === user.password) {
@@ -81,5 +84,4 @@ export class LoginViewComponent implements OnInit {
     })
 
   }
-
 }

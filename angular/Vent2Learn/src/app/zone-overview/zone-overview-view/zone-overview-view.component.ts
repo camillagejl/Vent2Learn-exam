@@ -12,15 +12,17 @@ import {AirCalculationsService} from "../../shared-services/air-calculations.ser
 })
 export class ZoneOverviewViewComponent implements OnInit {
 
-  userId;
-  user;
+  userId; // Found from the URL parameter.
+  user; // The user that is logged in.
 
-  room;
-  vent;
+  room; // The current room the user is in.
+  vent; // The current vent the user is connected to.
 
-  userHeatingLevel = 5;
-  userVentilationLevel = 5;
+  userHeatingLevel = 5; // Will default to the user's last level from the database, or else default to this.
+  userVentilationLevel = 5; // Will default to the user's last level from the database, or else default to this.
 
+  // The calculated temperature and humidity based on all users in the zone's ventilation- and heatingLevels and zone
+  // democracy.
   zoneTemperature;
   zoneHumidity;
 
@@ -33,10 +35,12 @@ export class ZoneOverviewViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Finds the userId parameter from the URL.
     this._route.params.subscribe(params => {
       this.userId = params["userId"];
     });
 
+    // This function retrieves the user and goes on to calculate the current temperature and humidity.
     this.retrieveUser();
   }
 
@@ -45,8 +49,13 @@ export class ZoneOverviewViewComponent implements OnInit {
       .subscribe(
         data => {
           this.user = data;
+
+          // Sets the user's heating- and ventilationLevel based on the user's levels in the database.
           this.userHeatingLevel = this.user.heatingLevel;
           this.userVentilationLevel = this.user.ventilationLevel;
+
+          // Retrieves the vent that the user is connected to - WITHOUT going to retrieve it again. If the parameter was
+          // 'retrieveTrue', it would go retrieve it again and go in an infinite loop.
           this.retrieveVent('retrieveFalse');
         },
         error => {
@@ -59,9 +68,12 @@ export class ZoneOverviewViewComponent implements OnInit {
       .subscribe(
         data => {
           this.vent = data;
-          this.zoneTemperature = this.vent.currentTemperature;
-          this.zoneHumidity = this.vent.currentHumidity;
-          this.calculateZoneValues(retrieve);
+
+          // Finds all users at this vent.
+          this.findZoneUsers(retrieve);
+
+          // Retrieves the room. This is only done now because the vents needs to be retrieved first, so the room can
+          // be retrieved based on the roomId.
           this.retrieveRoom();
         },
         error => {
@@ -81,12 +93,14 @@ export class ZoneOverviewViewComponent implements OnInit {
         });
   }
 
-  calculateZoneValues(retrieve) {
+  findZoneUsers(retrieve) {
     this.usersService.getAll()
       .subscribe(
         (data: Array<any>) => {
           const users = data;
-          console.log("Array?", users);
+
+          // Finds all users in the specific vent, so we can find the average of only their settings, instead of all
+          // users in the system.
           let zoneUsers = [];
           users.forEach(user => {
             if (user.ventId === this.vent.ventId) {
@@ -94,10 +108,8 @@ export class ZoneOverviewViewComponent implements OnInit {
             }
           });
 
+          // Goes on to calculate- and update the the zoneTemperature and zoneHumidity based on the users at the vent.
           this.updateAirCaulculations(zoneUsers, retrieve);
-
-          console.log(`Room temperature: ${this.airCalculationsService.calculateRoomTemperature(zoneUsers)}°C`);
-          console.log(`Room humidity: ${this.airCalculationsService.calculateRoomHumidity(zoneUsers)}%`);
         },
         error => {
           console.log(error);
@@ -113,19 +125,24 @@ export class ZoneOverviewViewComponent implements OnInit {
         response => {
           console.log(response);
 
-          console.log("Retrieve?", retrieve);
+          // Sets the temperature and humidity locally in this ts file.
+          this.zoneTemperature = this.vent.currentTemperature;
+          this.zoneHumidity = this.vent.currentHumidity;
 
+          // if 'retrieveTrue', this means that the heating- or ventilation value have been changed by the user, and the
+          // code needs to run again to update the current temperature and humidity. This is done to update it in the
+          // front after it is updated in the database.
           if (retrieve === 'retrieveTrue') {
             this.retrieveVent('retrieveFalse');
           }
-          this.zoneTemperature = this.vent.currentTemperature;
-          console.log("TEMPERATURE", this.zoneTemperature)
+
         },
         error => {
           console.log(error);
         });
   }
 
+  // Runs when the user updates either their ventilation- or heating level.
   updateUserLevel(setting, value) {
     console.log(setting, this[value]);
 
@@ -135,7 +152,10 @@ export class ZoneOverviewViewComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.calculateZoneValues('retrieveTrue');
+
+          // Runs all methods to calculate and display the new zone temperature and humidity. 'retrieveTrue' is true so
+          // it will also update in the front end and display the new values.
+          this.findZoneUsers('retrieveTrue');
         },
         error => {
           console.log(error);

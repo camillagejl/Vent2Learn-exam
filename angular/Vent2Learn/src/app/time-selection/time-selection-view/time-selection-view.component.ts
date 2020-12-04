@@ -10,9 +10,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TimeSelectionViewComponent implements OnInit {
 
-  userId;
-  user;
 
+  userId; // Found from the URL parameter.
+  user; // The user that is logged in.
+
+  // The user will have to choose between our hardcoded times below.
   timeStamps = [
     '00:00',
     '00:15',
@@ -112,6 +114,7 @@ export class TimeSelectionViewComponent implements OnInit {
     '23:45'
   ];
 
+  // The selected time will be taken from the user's leavingTime. If this is null, it will default to the below value.
   selectedTime = '14:30';
 
   timeControl = new FormControl();
@@ -124,10 +127,12 @@ export class TimeSelectionViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Finds the userId parameter from the URL.
     this._route.params.subscribe(params => {
       this.userId = params["userId"];
     });
 
+    // Finds the user with the userId.
     this.retrieveUser();
   }
 
@@ -136,13 +141,15 @@ export class TimeSelectionViewComponent implements OnInit {
       .subscribe(
         data => {
           this.user = data;
-          this.selectedTime = this.user.leavingTime.substring(0,5);
+          this.selectedTime = this.user.leavingTime.substring(0,5); // Sets the selected time from leavingTime from user
+          // in database. substring is used to remove the last :00 (seconds) from the time string.
         },
         error => {
           console.log(error);
         });
   }
 
+  // Updates the leavingTime for the user in the database, and navigates to the next page with the userId as parameter.
   updateUserLeavingTime() {
     this.usersService.update(this.userId, {
       leavingTime: this.selectedTime
@@ -156,6 +163,5 @@ export class TimeSelectionViewComponent implements OnInit {
         });
 
     this.router.navigate(['/zone-overview', this.userId]);
-
   }
 }
