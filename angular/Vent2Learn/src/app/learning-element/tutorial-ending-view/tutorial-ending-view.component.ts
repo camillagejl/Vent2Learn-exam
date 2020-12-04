@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-tutorial-ending-view',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutorialEndingViewComponent implements OnInit {
 
-  constructor() { }
+  userId; // Found from the URL parameter.
 
-  ngOnInit(): void {
+  constructor(
+    private _route: ActivatedRoute
+    ) { }
+
+  ngOnInit() {
+    // Finds the userId parameter from the URL.
+    this._route.params.subscribe(params => {
+        this.userId = params["userId"];
+    });
   }
-
 }

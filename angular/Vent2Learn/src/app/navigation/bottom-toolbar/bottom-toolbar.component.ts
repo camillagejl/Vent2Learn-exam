@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class BottomToolbarComponent implements OnInit {
 
-  userId; // Found from the URL parameter.
+  userId = 1; // Found from the URL parameter.
 
   currentRouteGroup;
 
@@ -23,7 +23,9 @@ export class BottomToolbarComponent implements OnInit {
   ngOnInit() {
     // Finds the userId parameter from the URL.
     this._route.params.subscribe(params => {
+      if (params["userId"]) {
       this.userId = params["userId"];
+      }
       console.log("UserId:", this.userId);
     });
 
