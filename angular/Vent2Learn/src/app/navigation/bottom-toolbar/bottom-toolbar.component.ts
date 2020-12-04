@@ -42,11 +42,11 @@ export class BottomToolbarComponent implements OnInit {
           currentRoute.includes('/zone-overview')
         ) {
         this.currentRouteGroup = 'vent';
-      } else if (currentRoute.includes('/settings/')) {
+      } else if (currentRoute.includes('/settings')) {
         this.currentRouteGroup = 'settings';
-      } else if (currentRoute.includes('/tutorial-starting/')) {
+      } else if (currentRoute.includes('/tutorial')) {
         this.currentRouteGroup = 'help';
-      } else if (currentRoute.includes('/about/')) {
+      } else if (currentRoute.includes('/about')) {
         this.currentRouteGroup = 'about';
       } else {
         this.currentRouteGroup = null;
