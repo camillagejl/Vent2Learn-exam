@@ -3,6 +3,7 @@
   <button
     class="flex_1"
     [ngClass]="{'selected' : currentRouteGroup === 'vent'}"
+    [routerLink]="['/zone-overview', userId]"
   >
     <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fan-table"
          class="svg-inline--fa fa-fan-table fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +24,7 @@
   <button
     class="flex_1"
     [ngClass]="{'selected' : currentRouteGroup === 'settings'}"
+    [routerLink]="['/settings', userId]"
   >
     <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="cog" class="svg-inline--fa fa-cog fa-w-16"
          role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -42,6 +44,7 @@
   <button
     class="flex_1"
     [ngClass]="{'selected' : currentRouteGroup === 'help'}"
+    [routerLink]="['/tutorial-starting', userId]"
   >
     <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="hands-helping"
          class="svg-inline--fa fa-hands-helping fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -62,6 +65,7 @@
   <button
     class="flex_1"
     [ngClass]="{'selected' : currentRouteGroup === 'about'}"
+    [routerLink]="['/about', userId]"
   >
     <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="question-circle"
          class="svg-inline--fa fa-question-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"

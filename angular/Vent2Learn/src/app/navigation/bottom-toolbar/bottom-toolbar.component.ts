@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Location} from "@angular/common";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-bottom-toolbar',
@@ -9,43 +9,51 @@ import {Router} from "@angular/router";
 })
 export class BottomToolbarComponent implements OnInit {
 
+  userId; // Found from the URL parameter.
+
   currentRouteGroup;
 
   constructor(
+    private _route: ActivatedRoute,
     private location: Location,
     private router: Router
   ) {
   }
 
   ngOnInit() {
+    // Finds the userId parameter from the URL.
+    this._route.params.subscribe(params => {
+      this.userId = params["userId"];
+      console.log("UserId:", this.userId);
+    });
+
     this.router.events.subscribe(event => {
 
       let currentRoute;
-
-      currentRoute = this.location.path();
+      currentRoute = this.location.path(); // Finds the current router location
 
       // The currentRouteGroup can have one of four strings as value - corresponding to our four menu buttons in the
       // bottom navigation. The button that corresponds to the currentRouteGroup will get a 'selected' class and be
       // styled so the user can see that that is the active path.
 
       if (
-        currentRoute.includes('/vent-selection/' ||
-          currentRoute.includes('/time-selection/') ||
-          currentRoute.includes('/zone-overview/')
-        )) {
+        currentRoute.includes('/vent-selection') ||
+          currentRoute.includes('/time-selection') ||
+          currentRoute.includes('/zone-overview')
+        ) {
         this.currentRouteGroup = 'vent';
-      }
-      if (currentRoute.includes('/settings/')) {
+      } else if (currentRoute.includes('/settings/')) {
         this.currentRouteGroup = 'settings';
-      }
-      if (currentRoute.includes('/tutorial/')) {
+      } else if (currentRoute.includes('/tutorial-starting/')) {
         this.currentRouteGroup = 'help';
-      }
-      if (currentRoute.includes('/about/')) {
+      } else if (currentRoute.includes('/about/')) {
         this.currentRouteGroup = 'about';
+      } else {
+        this.currentRouteGroup = null;
       }
+
+      console.log("currentRouteGroup", this.currentRouteGroup)
 
     });
   }
-
 }
