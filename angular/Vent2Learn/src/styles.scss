@@ -19,7 +19,7 @@
   --main-color-500: 62, 158, 253; // Main color from our design
   --main-color-600: 28, 129, 230;
   --main-color-700: 36, 123, 210;
-  --main-color-800: 11, 83, 154;
+  --main-color-800: 12, 96, 175;
   --main-color-900: 1, 26, 51;
 
   --grey-900: 58, 58, 58;
@@ -58,7 +58,8 @@ html, body {
   background-color: whitesmoke;
 }
 
-app-root {
+app-root,
+span {
   font-family: var(--main-font-family);
 }
 

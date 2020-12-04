@@ -16,3 +16,17 @@ button {
   justify-content: center;
   color: rgb(var(--main-color-100));
 }
+
+svg {
+  padding: 6px;
+}
+
+span {
+  font-size: 14px;
+  padding-bottom: 4px;
+}
+
+.selected {
+  background-color: rgb(var(--main-color-800));
+  box-shadow: var(--main-box-shadow);
+}
