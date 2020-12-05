@@ -21,8 +21,9 @@ export class BottomToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Finds the userId parameter from the URL.
+    // Finds the userId parameter from the URL. Except it doesn't work!
     this._route.params.subscribe(params => {
+      // The userId will only be updated if it finds a userId in the parameter - otherwise, it'll stay at 1.
       if (params["userId"]) {
       this.userId = params["userId"];
       }
