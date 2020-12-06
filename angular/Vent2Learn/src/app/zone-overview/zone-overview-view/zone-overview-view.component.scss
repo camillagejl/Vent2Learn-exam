@@ -1,0 +1,25 @@
+div {
+  margin-bottom: var(--main-margin);
+}
+
+.user-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.tooltip h3 {
+  font-weight: 700;
+}
+
+.read-more-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.short-tooltip,
+.read-more-button {
+  display: inline;
+}

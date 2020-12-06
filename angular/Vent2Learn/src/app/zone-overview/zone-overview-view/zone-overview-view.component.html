@@ -2,89 +2,120 @@
   Your zone
 </h1>
 
-<div>
-<h2>
-  Current temperature
-</h2>
+<div class="current-values">
+  <app-current-zone-value
+    [props]="{
+    setting: 'Current temperature',
+    value: zoneTemperature
+    }"
+  ></app-current-zone-value>
 
-<p>
-  {{zoneTemperature}}
-</p>
+  <app-current-zone-value
+    [props]="{
+    setting: 'Current humidity',
+    value: zoneHumidity
+    }"
+  ></app-current-zone-value>
 </div>
 
-<div>
-<h2>
-  Current humidity
-</h2>
+<div class="user-settings">
+  <app-setting-level-button
+    [props]="
+{
+setting: 'Heating level',
+value: {value: userHeatingLevel},
+editText: 'Edit heating'
+}"
+  ></app-setting-level-button>
 
-<p>
-  {{zoneHumidity}}
-</p>
+  <app-setting-level-button
+    [props]="
+{
+setting: 'Ventilation level',
+value: {value: userVentilationLevel},
+editText: 'Edit ventilation'
+}"
+  ></app-setting-level-button>
+
+  <app-setting-level-button
+    *ngIf="room && vent"
+    [props]="
+{
+setting: 'Zone',
+value: {roomName: room.roomName, ventNumber: vent.ventNumber},
+editText: 'Select new zone'
+}"
+  ></app-setting-level-button>
+
+  <app-setting-level-button
+    *ngIf="room && vent"
+    [props]="
+{
+setting: 'Leaving time',
+value: {value: user.leavingTime.substring(1,5)},
+editText: 'Change time'
+}"
+  ></app-setting-level-button>
 </div>
 
-<br>
-<b>
-<div *ngIf="room && vent">
-  Your current zone: {{room.roomName}}, vent {{vent.ventNumber}}
-</div>
-<div *ngIf="user">
-  Your leaving time: {{ user.leavingTime }}
-</div>
-</b>
-
-<br>
-<div *ngIf="zoneHumidity && zoneTemperature">
-  <i>
-    The below are the values we get from the zone democracy. They will update when you pull the sliders.
-  </i>
-  <br>
-  <b>
-  Current zone temperature: {{zoneTemperature}}
-  <br>
-  Current zone humidity: {{zoneHumidity}}
-  </b>
-</div>
-<br>
-<p>Heating Level</p>
-<mat-slider
-  tickInterval="1"
-  step="1"
-  min="0"
-  max="10"
-  [(ngModel)]="userHeatingLevel"
-  (ngModelChange)="updateUserLevel('heatingLevel', 'userHeatingLevel')"
+<div
+  *ngIf="currentTooltip"
+  class="tooltip"
 >
-</mat-slider>
-<br>
+  <h3>
+    Feeling a bit off?
+  </h3>
 
-<p>Ventilation Level</p>
-<mat-slider
-  tickInterval="1"
-  step="1"
-  min="0"
-  max="10"
-  [(ngModel)]="userVentilationLevel"
-  (ngModelChange)="updateUserLevel('ventilationLevel', 'userVentilationLevel')"
->
-</mat-slider>
-
-
-
-<br>
-<div *ngIf="user">
-  <p>
-    The below don't update if you update the values in the slider, only on reload. We can make this work, but I didn't
-    want to spend time on it if we're not going to use it.
+  <p class="short-tooltip">
+    {{ currentTooltip.shortTip }}
   </p>
-  <b>
-  Your heating level: {{user.heatingLevel}}
-    <br>
-  Your ventilation level: {{user.ventilationLevel}}
-  </b>
-  <br>
+
+  <button class="read-more-button">
+    Read more...
+  </button>
+
 </div>
 
-<br>
-<b>
-Tooltip:
-</b>
+<div>
+  <p>Heating Level</p>
+  <mat-slider vertical
+              tickInterval="1"
+              step="1"
+              min="0"
+              max="10"
+              [(ngModel)]="userHeatingLevel"
+              (ngModelChange)="updateUserLevel('heatingLevel', 'userHeatingLevel')"
+  >
+  </mat-slider>
+  <br>
+
+  <p>Ventilation Level</p>
+  <mat-slider vertical
+              tickInterval="1"
+              step="1"
+              min="0"
+              max="10"
+              [(ngModel)]="userVentilationLevel"
+              (ngModelChange)="updateUserLevel('ventilationLevel', 'userVentilationLevel')"
+  >
+  </mat-slider>
+
+</div>
+
+<!--<div *ngIf="user">-->
+<!--  <p>-->
+<!--    The below don't update if you update the values in the slider, only on reload. We can make this work, but I didn't-->
+<!--    want to spend time on it if we're not going to use it.-->
+<!--  </p>-->
+<!--  <b>-->
+<!--    Your heating level: {{user.heatingLevel}}-->
+<!--    <br>-->
+<!--    Your ventilation level: {{user.ventilationLevel}}-->
+<!--  </b>-->
+<!--  <br>-->
+<!--</div>-->
+
+<!--<br>-->
+<!--<b>-->
+<!--  Tooltip:-->
+<!--</b>-->

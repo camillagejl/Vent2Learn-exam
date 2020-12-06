@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-setting-level-button',
@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./setting-level-button.component.scss']
 })
 export class SettingLevelButtonComponent implements OnInit {
+
+  @Input() props: {
+    setting: string,
+    value: any,
+    editText: string
+  };
 
   constructor() { }
 

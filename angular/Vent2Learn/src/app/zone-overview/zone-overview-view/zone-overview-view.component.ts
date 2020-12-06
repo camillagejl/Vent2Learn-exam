@@ -4,6 +4,7 @@ import {UsersService} from "../../shared-services/users.service";
 import {RoomsService} from "../../shared-services/rooms.service";
 import {VentsService} from "../../shared-services/vents.service";
 import {AirCalculationsService} from "../../shared-services/air-calculations.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-zone-overview-view',
@@ -26,7 +27,38 @@ export class ZoneOverviewViewComponent implements OnInit {
   zoneTemperature;
   zoneHumidity;
 
+  tooltips =
+    [
+      {
+        // Too hot
+        minTemperature: 25,
+        maxTemperature: 100,
+        shortTip: 'Try turning the heating down or ventilation up.'
+      },
+      {
+        // Too cold
+        minTemperature: 0,
+        maxTemperature: 19,
+        shortTip: 'Try turning the heating up or the ventilation down.'
+      },
+      {
+        // Too humid
+        minHumidity: 51,
+        maxHumidity: 100,
+        shortTip: 'Try turning the ventilation up.',
+      },
+      {
+        // Too dry
+        minHumidity: 0,
+        maxHumidity: 39,
+        shortTip: 'Try turning the ventilation down.',
+      }
+    ];
+
+  currentTooltip: object;
+
   constructor(
+    // public dialog: MatDialog,
     private _route: ActivatedRoute,
     private airCalculationsService: AirCalculationsService,
     private usersService: UsersService,
@@ -37,11 +69,13 @@ export class ZoneOverviewViewComponent implements OnInit {
   ngOnInit() {
     // Finds the userId parameter from the URL.
     this._route.params.subscribe(params => {
-      this.userId = params["userId"];
-    });
+        this.userId = params["userId"];
+      }
+    );
 
     // This function retrieves the user and goes on to calculate the current temperature and humidity.
-    this.retrieveUser();
+    this
+      .retrieveUser();
   }
 
   retrieveUser() {
@@ -104,7 +138,7 @@ export class ZoneOverviewViewComponent implements OnInit {
           let zoneUsers = [];
           users.forEach(user => {
             if (user.ventId === this.vent.ventId) {
-            zoneUsers.push(user);
+              zoneUsers.push(user);
             }
           });
 
@@ -129,6 +163,20 @@ export class ZoneOverviewViewComponent implements OnInit {
           this.zoneTemperature = this.vent.currentTemperature;
           this.zoneHumidity = this.vent.currentHumidity;
 
+          // Sets the relevant tooltip.
+          this.tooltips.forEach(tooltip => {
+            if (this.zoneTemperature > tooltip.minTemperature
+              && this.zoneTemperature < tooltip.maxTemperature
+              || this.zoneHumidity > tooltip.minHumidity
+              && this.zoneHumidity < tooltip.maxHumidity
+            ) {
+              this.currentTooltip = tooltip;
+            }
+            // else {
+            //   this.currentTooltip = null;
+            // }
+          });
+
           // if 'retrieveTrue', this means that the heating- or ventilation value have been changed by the user, and the
           // code needs to run again to update the current temperature and humidity. This is done to update it in the
           // front after it is updated in the database.
@@ -142,7 +190,7 @@ export class ZoneOverviewViewComponent implements OnInit {
         });
   }
 
-  // Runs when the user updates either their ventilation- or heating level.
+// Runs when the user updates either their ventilation- or heating level.
   updateUserLevel(setting, value) {
     console.log(setting, this[value]);
 
@@ -161,5 +209,6 @@ export class ZoneOverviewViewComponent implements OnInit {
           console.log(error);
         });
   }
+
 
 }

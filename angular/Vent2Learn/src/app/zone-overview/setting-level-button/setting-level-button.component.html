@@ -1,1 +1,22 @@
-<p>setting-level-button works!</p>
+<mat-card>
+  <h3>
+    {{ props.setting }}
+  </h3>
+
+<!-- Shows the value if there is only one value (for temperature, humidity and time) -->
+  <div
+    *ngIf="props.value.value"
+    class="setting-value">
+    {{ props.value.value }}
+  </div>
+
+<!-- Shows the values of roomName and roomNumber for the zone -->
+  <div *ngIf="props.value.roomName && props.value.ventNumber"
+    class="setting-value">
+    {{ props.value.roomName }}-{{ props.value.ventNumber }}
+  </div>
+
+  <button mat-raised-button>
+    {{ props.editText }}
+  </button>
+</mat-card>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingCurrentValueComponent } from './setting-current-value.component';
+import { CurrentZoneValueComponent } from './current-zone-value.component';
 
 describe('SettingCurrentValueComponent', () => {
-  let component: SettingCurrentValueComponent;
-  let fixture: ComponentFixture<SettingCurrentValueComponent>;
+  let component: CurrentZoneValueComponent;
+  let fixture: ComponentFixture<CurrentZoneValueComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingCurrentValueComponent ]
+      declarations: [ CurrentZoneValueComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingCurrentValueComponent);
+    fixture = TestBed.createComponent(CurrentZoneValueComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
