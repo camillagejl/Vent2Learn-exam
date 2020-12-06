@@ -9,10 +9,11 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {TooltipDialogComponent} from './tooltip-dialog/tooltip-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { SettingLevelDialogComponent } from './setting-level-dialog/setting-level-dialog.component';
 
 
 @NgModule({
-  declarations: [SettingLevelButtonComponent, CurrentZoneValueComponent, ZoneOverviewViewComponent, TooltipDialogComponent],
+  declarations: [SettingLevelButtonComponent, CurrentZoneValueComponent, ZoneOverviewViewComponent, TooltipDialogComponent, SettingLevelDialogComponent],
   imports: [
     CommonModule,
     MatSliderModule,

@@ -219,18 +219,27 @@ export class ZoneOverviewViewComponent implements OnInit {
           this.zoneHumidity = this.vent.currentHumidity;
 
           // Sets the relevant tooltip.
-          this.tooltips.forEach(tooltip => {
-            if (this.zoneTemperature > tooltip.minTemperature
+          // this.tooltips.forEach(tooltip => {
+          //   if (this.zoneTemperature > tooltip.minTemperature
+          //     && this.zoneTemperature < tooltip.maxTemperature
+          //     || this.zoneHumidity > tooltip.minHumidity
+          //     && this.zoneHumidity < tooltip.maxHumidity
+          //   ) {
+          //     this.currentTooltip = tooltip;
+          //   }
+          //   else {
+          //     this.currentTooltip = null;
+          //   }
+          // });
+
+          const tooltip = this.tooltips.filter(tooltip => {
+            return this.zoneTemperature > tooltip.minTemperature
               && this.zoneTemperature < tooltip.maxTemperature
               || this.zoneHumidity > tooltip.minHumidity
               && this.zoneHumidity < tooltip.maxHumidity
-            ) {
-              this.currentTooltip = tooltip;
-            }
-            // else {
-            //   this.currentTooltip = null;
-            // }
           });
+
+          this.currentTooltip = tooltip[0] || null;
 
           // if 'retrieveTrue', this means that the heating- or ventilation value have been changed by the user, and the
           // code needs to run again to update the current temperature and humidity. This is done to update it in the
