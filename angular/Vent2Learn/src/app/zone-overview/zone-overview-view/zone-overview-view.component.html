@@ -70,7 +70,9 @@ editText: 'Change time'
     {{ currentTooltip.shortTip }}
   </p>
 
-  <button class="read-more-button">
+  <button
+    (click)="openTooltipDialog(currentTooltip.longTip)"
+    class="read-more-button">
     Read more...
   </button>
 

@@ -4,7 +4,8 @@ import {UsersService} from "../../shared-services/users.service";
 import {RoomsService} from "../../shared-services/rooms.service";
 import {VentsService} from "../../shared-services/vents.service";
 import {AirCalculationsService} from "../../shared-services/air-calculations.service";
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {TooltipDialogComponent} from "../tooltip-dialog/tooltip-dialog.component";
 
 @Component({
   selector: 'app-zone-overview-view',
@@ -33,32 +34,86 @@ export class ZoneOverviewViewComponent implements OnInit {
         // Too hot
         minTemperature: 25,
         maxTemperature: 100,
-        shortTip: 'Try turning the heating down or ventilation up.'
+        shortTip: 'Try turning the heating down or ventilation up.',
+        longTip: `
+            <p>
+                Our recommended classroom temperature is <b>between 20°C and 24°C</b>, but your zone is warmer than
+                this.
+            </p>
+            <p>    
+                What you can do:
+            </p> 
+            <ul>
+                <li><b>Turn down the heating</b>, lowering the temperature</li>
+                <li><b>Turn up the ventilation</b>, lowering the temperature and humidity</li>
+            </ul>
+        `
       },
       {
         // Too cold
         minTemperature: 0,
         maxTemperature: 19,
-        shortTip: 'Try turning the heating up or the ventilation down.'
+        shortTip: 'Try turning the heating up or the ventilation down.',
+        longTip: `
+            <p>
+                Our recommended classroom temperature is <b>between 20°C and 24°C</b>, but your zone is colder than
+                this.
+            </p>
+            <p>    
+                What you can do:
+            </p> 
+            <ul>
+                <li><b>Turn up the heating</b>, increasing the temperature</li>
+                <li><b>Turn down the ventilation</b>, increasing the temperature and humidity</li>
+            </ul>
+        `
       },
       {
         // Too humid
         minHumidity: 51,
         maxHumidity: 100,
         shortTip: 'Try turning the ventilation up.',
+        longTip: `
+            <p>
+                Our recommended classroom humidity is <b>between 40% and 50%</b>, but your zone is more humid than
+                this.
+            </p>
+            <p>    
+                What you can do:
+            </p> 
+            <ul>
+                <li><b>Turn up the ventilation</b>, lowering the humidity and temperature.</li>
+                <li>If you want to keep your current temperature, you can <b>turn up the heating</b> at the same
+                time. </li>
+            </ul>
+        `
       },
       {
         // Too dry
         minHumidity: 0,
         maxHumidity: 39,
         shortTip: 'Try turning the ventilation down.',
+        longTip: `
+            <p>
+                Our recommended classroom humidity is <b>between 40% and 50%</b>, but your zone is dryer than
+                this.
+            </p>
+            <p>    
+                What you can do:
+            </p> 
+            <ul>
+                <li><b>Turn down the ventilation</b>, increasing the humidity and temperature.</li>
+                <li>If you want to keep your current temperature, you can <b>turn up the heating</b> at the same
+                time. </li>
+            </ul>
+        `
       }
     ];
 
   currentTooltip: object;
 
   constructor(
-    // public dialog: MatDialog,
+    public dialog: MatDialog,
     private _route: ActivatedRoute,
     private airCalculationsService: AirCalculationsService,
     private usersService: UsersService,
@@ -210,5 +265,17 @@ export class ZoneOverviewViewComponent implements OnInit {
         });
   }
 
+  openTooltipDialog(longTip) {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      tooltip: longTip
+    };
+
+    dialogConfig.autoFocus = false;
+
+    this.dialog.open(TooltipDialogComponent, dialogConfig);
+  }
 
 }
