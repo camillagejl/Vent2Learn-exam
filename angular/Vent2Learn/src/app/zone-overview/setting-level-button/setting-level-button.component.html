@@ -5,7 +5,7 @@
 
 <!-- Shows the value if there is only one value (for temperature, humidity and time) -->
   <div
-    *ngIf="props.value.value"
+    *ngIf="props.value.value !== null"
     class="setting-value">
     {{ props.value.value }}
   </div>

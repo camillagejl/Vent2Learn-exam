@@ -6,6 +6,7 @@ import {VentsService} from "../../shared-services/vents.service";
 import {AirCalculationsService} from "../../shared-services/air-calculations.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {TooltipDialogComponent} from "../tooltip-dialog/tooltip-dialog.component";
+import {SettingLevelDialogComponent} from "../setting-level-dialog/setting-level-dialog.component";
 
 @Component({
   selector: 'app-zone-overview-view',
@@ -124,7 +125,7 @@ export class ZoneOverviewViewComponent implements OnInit {
   ngOnInit() {
     // Finds the userId parameter from the URL.
     this._route.params.subscribe(params => {
-        this.userId = params["userId"];
+        this.userId = parseInt(params["userId"]);
       }
     );
 
@@ -183,6 +184,7 @@ export class ZoneOverviewViewComponent implements OnInit {
   }
 
   findZoneUsers(retrieve) {
+    console.log("Emitting");
     this.usersService.getAll()
       .subscribe(
         (data: Array<any>) => {
@@ -195,7 +197,17 @@ export class ZoneOverviewViewComponent implements OnInit {
             if (user.ventId === this.vent.ventId) {
               zoneUsers.push(user);
             }
+
+            console.log("This doesn't fit fits", user.userId, this.userId);
+
+            if (user.userId === this.userId) {
+              console.log("This fits", user.userId, this.userId);
+              this.userHeatingLevel = user.heatingLevel;
+              this.userVentilationLevel = user.ventilationLevel;
+            }
+
           });
+
 
           // Goes on to calculate- and update the the zoneTemperature and zoneHumidity based on the users at the vent.
           this.updateAirCaulculations(zoneUsers, retrieve);
@@ -218,27 +230,13 @@ export class ZoneOverviewViewComponent implements OnInit {
           this.zoneTemperature = this.vent.currentTemperature;
           this.zoneHumidity = this.vent.currentHumidity;
 
-          // Sets the relevant tooltip.
-          // this.tooltips.forEach(tooltip => {
-          //   if (this.zoneTemperature > tooltip.minTemperature
-          //     && this.zoneTemperature < tooltip.maxTemperature
-          //     || this.zoneHumidity > tooltip.minHumidity
-          //     && this.zoneHumidity < tooltip.maxHumidity
-          //   ) {
-          //     this.currentTooltip = tooltip;
-          //   }
-          //   else {
-          //     this.currentTooltip = null;
-          //   }
-          // });
-
+          // Filters the tooltips, and returns the first tooltip that matches the settings, or null if none do.
           const tooltip = this.tooltips.filter(tooltip => {
             return this.zoneTemperature > tooltip.minTemperature
               && this.zoneTemperature < tooltip.maxTemperature
               || this.zoneHumidity > tooltip.minHumidity
               && this.zoneHumidity < tooltip.maxHumidity
           });
-
           this.currentTooltip = tooltip[0] || null;
 
           // if 'retrieveTrue', this means that the heating- or ventilation value have been changed by the user, and the
@@ -255,36 +253,50 @@ export class ZoneOverviewViewComponent implements OnInit {
   }
 
 // Runs when the user updates either their ventilation- or heating level.
-  updateUserLevel(setting, value) {
-    console.log(setting, this[value]);
-
-    this.usersService.update(this.userId, {
-      [setting]: this[value]
-    })
-      .subscribe(
-        response => {
-          console.log(response);
-
-          // Runs all methods to calculate and display the new zone temperature and humidity. 'retrieveTrue' is true so
-          // it will also update in the front end and display the new values.
-          this.findZoneUsers('retrieveTrue');
-        },
-        error => {
-          console.log(error);
-        });
-  }
+//   updateUserLevel(setting, value) {
+//     console.log(setting, this[value]);
+//
+//     this.usersService.update(this.userId, {
+//       [setting]: this[value]
+//     })
+//       .subscribe(
+//         response => {
+//           console.log(response);
+//
+//           // Runs all methods to calculate and display the new zone temperature and humidity. 'retrieveTrue' is true so
+//           // it will also update in the front end and display the new values.
+//           this.findZoneUsers('retrieveTrue');
+//         },
+//         error => {
+//           console.log(error);
+//         });
+//   }
 
   openTooltipDialog(longTip) {
-
     const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = false;
 
     dialogConfig.data = {
       tooltip: longTip
     };
 
+    this.dialog.open(TooltipDialogComponent, dialogConfig);
+  }
+
+  openSettingDialog(userId, setting) {
+    const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = false;
 
-    this.dialog.open(TooltipDialogComponent, dialogConfig);
+    dialogConfig.data = {
+      userId: userId,
+      setting: setting
+    };
+
+    let dialogRef = this.dialog.open(SettingLevelDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.findZoneUsers('retrieveTrue');
+    });
   }
 
 }

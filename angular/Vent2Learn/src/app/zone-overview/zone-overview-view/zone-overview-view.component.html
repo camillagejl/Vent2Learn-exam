@@ -20,6 +20,8 @@
 
 <div class="user-settings">
   <app-setting-level-button
+    (click)="openSettingDialog(userId, 'heatingLevel')"
+    (someEvent)="findZoneUsers($event)"
     [props]="
 {
 setting: 'Heating level',
@@ -29,6 +31,7 @@ editText: 'Edit heating'
   ></app-setting-level-button>
 
   <app-setting-level-button
+    (click)="openSettingDialog(userId, 'ventilationLevel')"
     [props]="
 {
 setting: 'Ventilation level',
@@ -78,31 +81,30 @@ editText: 'Change time'
 
 </div>
 
-<div>
-  <p>Heating Level</p>
-  <mat-slider vertical
-              tickInterval="1"
-              step="1"
-              min="0"
-              max="10"
-              [(ngModel)]="userHeatingLevel"
-              (ngModelChange)="updateUserLevel('heatingLevel', 'userHeatingLevel')"
-  >
-  </mat-slider>
-  <br>
+<!--<div>-->
+<!--  <p>Heating Level</p>-->
+<!--  <mat-slider vertical-->
+<!--              tickInterval="1"-->
+<!--              step="1"-->
+<!--              min="0"-->
+<!--              max="10"-->
+<!--              [(ngModel)]="userHeatingLevel"-->
+<!--              (ngModelChange)="updateUserLevel('heatingLevel', 'userHeatingLevel')"-->
+<!--  >-->
+<!--  </mat-slider>-->
 
-  <p>Ventilation Level</p>
-  <mat-slider vertical
-              tickInterval="1"
-              step="1"
-              min="0"
-              max="10"
-              [(ngModel)]="userVentilationLevel"
-              (ngModelChange)="updateUserLevel('ventilationLevel', 'userVentilationLevel')"
-  >
-  </mat-slider>
+<!--  <p>Ventilation Level</p>-->
+<!--  <mat-slider vertical-->
+<!--              tickInterval="1"-->
+<!--              step="1"-->
+<!--              min="0"-->
+<!--              max="10"-->
+<!--              [(ngModel)]="userVentilationLevel"-->
+<!--              (ngModelChange)="updateUserLevel('ventilationLevel', 'userVentilationLevel')"-->
+<!--  >-->
+<!--  </mat-slider>-->
 
-</div>
+<!--</div>-->
 
 <!--<div *ngIf="user">-->
 <!--  <p>-->

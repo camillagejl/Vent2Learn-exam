@@ -1,1 +1,35 @@
-<p>setting-level-dialog works!</p>
+<div>
+  User: {{ userId }}
+</div>
+
+<div>
+  {{ setting }}
+</div>
+
+<div>
+  {{ settingValue }}
+</div>
+
+<mat-slider vertical
+            tickInterval="1"
+            step="1"
+            min="0"
+            max="10"
+            [(ngModel)]="settingValue"
+            (ngModelChange)="updateUserLevel(setting, settingValue)"
+>
+</mat-slider>
+
+<div
+  mat-dialog-actions
+  align="end"
+>
+  <button
+    mat-button
+    mat-dialog-close
+    color="primary"
+    class="uppercase"
+  >
+    OK!
+  </button>
+</div>
