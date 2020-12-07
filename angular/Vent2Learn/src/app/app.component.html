@@ -3,8 +3,17 @@ More pages can be added in app.component.ts -->
 
 <app-top-toolbar *ngIf="displayToolbars"></app-top-toolbar>
 
+<div class="top-circle">
+  <img src="../assets/bottom-circle.png">
+</div>
+
+
 <div class="router-outlet-container">
   <router-outlet></router-outlet>
 </div>
 
 <app-bottom-toolbar *ngIf="displayToolbars"></app-bottom-toolbar>
+
+<div class="bottom-circle">
+<img src="../assets/bottom-circle.png">
+</div>

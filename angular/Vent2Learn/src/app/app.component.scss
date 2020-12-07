@@ -15,5 +15,18 @@ app-bottom-toolbar {
 }
 
 .router-outlet-container {
-  margin: calc(56px + var(--main-margin)) var(--main-margin);
+  margin: calc(56px + var(--main-margin) + 75px + var(--main-margin)) var(--main-margin) 0;
+}
+
+.bottom-circle {
+  position: absolute;
+  right: 0;
+}
+
+
+.top-circle {
+  transform: rotate(180deg);
+  position: absolute;
+  left: 0;
+  top: 0;
 }
