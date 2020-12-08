@@ -66,12 +66,22 @@ export class VentSelectionViewComponent implements OnInit {
   retrieveRooms() {
     this.roomsService.getAll()
       .subscribe(
-        data => {
-          this.rooms = data;
+        (data: Array<any>) => {
+          this.rooms = data.sort(this.sortRooms);
         },
         error => {
           console.log(error);
         });
+  }
+
+  // Function from:
+  // https://www.wikitechy.com/tutorials/javascript/sort-array-of-objects-by-string-property-value-in-javascript
+  sortRooms(a, b) {
+    if (a.roomName < b.roomName)
+      return -1;
+    if (a.roomName > b.roomName)
+      return 1;
+    return 0;
   }
 
   retrieveVents() {
@@ -102,9 +112,9 @@ export class VentSelectionViewComponent implements OnInit {
 
               this.rooms.forEach(room => {
                 if (room.roomId === vent.roomId) {
-                console.log("Selected room!", this.selectedRoom);
-                this.selectedRoom = room;
-                this.selectedRoomName = room.roomName;
+                  console.log("Selected room!", this.selectedRoom);
+                  this.selectedRoom = room;
+                  this.selectedRoomName = room.roomName;
                 }
               })
             }
