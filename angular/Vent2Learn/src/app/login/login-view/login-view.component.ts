@@ -3,6 +3,8 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 import { ErrorStateMatcher } from '@angular/material/core';
 import {UsersService} from "../../shared-services/users.service";
 import {Router} from "@angular/router";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {LoginInfoDialogComponent} from "../login-info-dialog/login-info-dialog.component";
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -30,6 +32,7 @@ export class LoginViewComponent implements OnInit {
   hidePassword = true;
 
   constructor(
+    public dialog: MatDialog,
     private usersService: UsersService,
     private router: Router
   ) {
@@ -71,6 +74,13 @@ export class LoginViewComponent implements OnInit {
         error => {
           console.log(error);
         });
+  }
+
+  openInfoDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = false;
+
+    this.dialog.open(LoginInfoDialogComponent, dialogConfig);
   }
 
   // Loops over the users to see if the form values match a user. If they do, the user will be sent to the next page

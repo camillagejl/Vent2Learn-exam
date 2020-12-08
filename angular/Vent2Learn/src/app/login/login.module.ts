@@ -7,10 +7,12 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {AppRoutingModule} from "../app-routing.module";
+import { LoginInfoDialogComponent } from './login-info-dialog/login-info-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
-  declarations: [LoginViewComponent],
+  declarations: [LoginViewComponent, LoginInfoDialogComponent],
   exports: [
     LoginViewComponent
   ],
@@ -22,7 +24,8 @@ import {AppRoutingModule} from "../app-routing.module";
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule
   ]
 })
 export class LoginModule {

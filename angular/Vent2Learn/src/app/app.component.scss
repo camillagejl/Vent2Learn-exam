@@ -17,7 +17,9 @@ app-tutorial-bottom-toolbar
 }
 
 .router-outlet-container {
-  margin: calc(56px + var(--main-margin) + 75px + var(--main-margin)) var(--main-margin) 0;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: calc(56px + var(--main-margin) + 75px + var(--main-margin)) var(--main-margin) 0;
 }
 
 .bottom-circle {
