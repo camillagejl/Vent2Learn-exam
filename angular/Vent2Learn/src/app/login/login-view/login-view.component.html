@@ -4,7 +4,7 @@
 </div>
 <div class="form-container">
   <form class="grid_2_col" action="auth" method="POST" [formGroup]="formGroup" (ngSubmit)="submitForm()">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" [(ngModel)]="userEmail"
              placeholder="Ex. JaneDoe@zealand.dk">
@@ -15,7 +15,7 @@
         Email is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
       <input matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" [(ngModel)]="userPassword"
              placeholder="Enter your password" [type]="hidePassword ? 'password' : 'text'">

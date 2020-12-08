@@ -4,6 +4,8 @@ import {FormControl} from "@angular/forms";
 import {VentsService} from "../../shared-services/vents.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../shared-services/users.service";
+import {Observable} from "rxjs";
+import {map, startWith} from "rxjs/operators";
 
 @Component({
   selector: 'app-vent-selection-view',
@@ -16,12 +18,23 @@ export class VentSelectionViewComponent implements OnInit {
   user; // The user that is logged in.
 
   rooms; // Contains all rooms from the rooms table in the database.
-  vents; // Contains all rooms from the rooms table in the database.
+  vents; // Contains all vents
   selectedRoom = null; // Will default to the user's last used room from the database, or else default to null.
+  selectedRoomName = null;
   selectedVent = null;
 
   roomControl = new FormControl();
   ventControl = new FormControl();
+
+  options: string[] = ['One', 'Two', 'Three'];
+
+  filteredRooms: Observable<string[]>;
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.rooms.filter(room => room.roomName.toLowerCase().indexOf(filterValue) === 0);
+  }
 
   constructor(
     private router: Router,
@@ -37,6 +50,11 @@ export class VentSelectionViewComponent implements OnInit {
     this._route.params.subscribe(params => {
       this.userId = params["userId"];
     });
+
+    this.filteredRooms = this.roomControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
 
     this.retrieveRooms();
     this.retrieveVents();
@@ -81,9 +99,17 @@ export class VentSelectionViewComponent implements OnInit {
           // the vent.
           this.vents.forEach(vent => {
             if (vent.ventId === this.selectedVent) {
-              this.selectedRoom = vent.roomId;
+
+              this.rooms.forEach(room => {
+                if (room.roomId === vent.roomId) {
+                console.log("Selected room!", this.selectedRoom);
+                this.selectedRoom = room;
+                this.selectedRoomName = room.roomName;
+                }
+              })
             }
           });
+
         },
         error => {
           console.log(error);
@@ -106,4 +132,14 @@ export class VentSelectionViewComponent implements OnInit {
     this.router.navigate(['/time-selection', this.userId]);
 
   }
+
+  updateRoom() {
+    this.selectedVent = null;
+    this.rooms.forEach(room => {
+      if (room.roomName === this.selectedRoomName) {
+        this.selectedRoom = room;
+      }
+    });
+  }
+
 }

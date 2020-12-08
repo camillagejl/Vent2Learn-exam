@@ -1,42 +1,54 @@
 <div class="view">
-  <mat-card>
-    <mat-form-field>
-      <mat-select
-        placeholder="Select room"
-        [formControl]="roomControl"
-        [(ngModel)]="selectedRoom"
-        (ngModelChange)="selectedVent = null"
+
+  <p>
+    Please select your room and vent number
+  </p>
+
+  <form
+    *ngIf="rooms && vents"
+    [formGroup]="" class="example-form"
+  >
+    <mat-form-field
+      appearance="outline"
+      class="example-full-width"
+    >
+      <mat-label>Select vent</mat-label>
+      <input type="text"
+             (click)="selectedRoomName = ''"
+             aria-label="Number"
+             matInput
+             [formControl]="roomControl"
+             [matAutocomplete]="auto"
+             [(ngModel)]="selectedRoomName"
+             (ngModelChange)="updateRoom()"
+             #selectRoom
       >
-
-        <ng-container *ngFor="let room of rooms">
-          <mat-option [value]="room.roomId">
-            {{room.roomName}}
-          </mat-option>
-        </ng-container>
-
-      </mat-select>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let room of filteredRooms | async" [value]="room.roomName">
+          {{room.roomName}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
-  </mat-card>
 
-  <br>
-
-  <mat-card>
-    <mat-form-field>
+    <mat-form-field
+      appearance="outline"
+    >
+      <mat-label>Select vent</mat-label>
       <mat-select [disabled]="!selectedRoom"
-                  placeholder="Select vent"
                   [formControl]="ventControl"
                   [(ngModel)]="selectedVent"
       >
 
         <ng-container *ngFor="let vent of vents">
-          <mat-option *ngIf="vent.roomId === selectedRoom" [value]="vent.ventId">
+          <mat-option *ngIf="selectedRoom && vent.roomId === selectedRoom.roomId" [value]="vent.ventId">
             {{vent.ventNumber}}
           </mat-option>
         </ng-container>
 
       </mat-select>
     </mat-form-field>
-  </mat-card>
+
+  </form>
 
   <button type="submit"
           mat-raised-button
