@@ -1,27 +1,61 @@
 <div class="view">
   <h1>
-    Task 1: Get a temperature of 22 degrees
+    Task 1: Get a temperature of approx. 22 degrees
   </h1>
 
-  {{ setting }}: {{ users[0][setting] }}
+  <div class="user-settings">
+    <div class="setting-flex flex_1 setting-buttons">
+      <button
+        [ngClass]="{'selected' : setting === 'ventilationLevel'}"
+        (click)="setting = 'ventilationLevel'">
+        Ventilation
+      </button>
 
-  <button (click)="setting = 'ventilationLevel'">Ventilation</button>
-  <button (click)="setting = 'heatingLevel'">Heating</button>
+      <button
+        [ngClass]="{'selected' : setting === 'heatingLevel'}"
+        (click)="setting = 'heatingLevel'">
+        Heating
+      </button>
+    </div>
 
-  <mat-slider vertical
-              tickInterval="1"
-              step="1"
-              min="0"
-              max="10"
-              [(ngModel)]="users[0][setting]"
+    <div class="setting-flex flex_1">
+      <mat-slider
+        color="primary"
+        vertical
+        thumbLabel
+        tickInterval="1"
+        step="1"
+        min="0"
+        max="10"
+        [(ngModel)]="users[0][setting]"
+        (ngModelChange)="updateZoneValues()"
+      >
+      </mat-slider>
+    </div>
+  </div>
+
+  <div class="zone-values">
+    {{ zoneTemperature }}, {{ zoneHumidity }}
+  </div>
+
+  <br>
+  <button
+    class="full_width uppercase"
+    *ngIf="zoneTemperature >= 22 && zoneTemperature < 23"
+    mat-raised-button
+    color="primary"
+    [routerLink]="['/tutorial-task-2', userId]"
   >
-  </mat-slider>
+    Yes! That's right &#8594;
+  </button>
 
-  <!--  <button-->
-  <!--    mat-raised-button-->
-  <!--    [routerLink]="['/tutorial-task-2', userId]"-->
-  <!--  >-->
-  <!--    Finish it!-->
-  <!--  </button>-->
+  <button
+    disabled
+    class="full_width uppercase"
+    *ngIf="zoneTemperature < 22 || zoneTemperature >= 23"
+    mat-raised-button
+  >
+    It's not quite there yet
+  </button>
 
 </div>

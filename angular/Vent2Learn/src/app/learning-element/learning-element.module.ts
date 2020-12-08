@@ -7,7 +7,7 @@ import { TutorialTask1ViewComponent } from './tutorial-task1-view/tutorial-task1
 import { TutorialEndingViewComponent } from './tutorial-ending-view/tutorial-ending-view.component';
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
-import { TutorialTask1ModalContentComponent } from './tutorial-task1-view/modal-content/tutorial-task1-modal-content.component';
+import { TutorialTask1ModalContentComponent } from './tutorial-task1-view/tutorial-task1-modal-content/tutorial-task1-modal-content.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSliderModule} from "@angular/material/slider";

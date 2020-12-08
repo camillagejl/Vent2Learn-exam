@@ -1,0 +1,25 @@
+.user-settings {
+  display: flex;
+}
+
+.setting-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.setting-buttons {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    &:first-child {
+      margin-bottom: var(--main-margin);
+    }
+
+    &.selected {
+      background-color: pink;
+    }
+  }
+
+}

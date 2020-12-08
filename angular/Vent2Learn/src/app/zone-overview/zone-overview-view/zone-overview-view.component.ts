@@ -252,26 +252,6 @@ export class ZoneOverviewViewComponent implements OnInit {
         });
   }
 
-// Runs when the user updates either their ventilation- or heating level.
-//   updateUserLevel(setting, value) {
-//     console.log(setting, this[value]);
-//
-//     this.usersService.update(this.userId, {
-//       [setting]: this[value]
-//     })
-//       .subscribe(
-//         response => {
-//           console.log(response);
-//
-//           // Runs all methods to calculate and display the new zone temperature and humidity. 'retrieveTrue' is true so
-//           // it will also update in the front end and display the new values.
-//           this.findZoneUsers('retrieveTrue');
-//         },
-//         error => {
-//           console.log(error);
-//         });
-//   }
-
   openTooltipDialog(longTip) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = false;
