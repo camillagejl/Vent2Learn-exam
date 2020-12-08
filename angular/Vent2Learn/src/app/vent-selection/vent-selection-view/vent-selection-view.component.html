@@ -1,48 +1,48 @@
 <div class="view">
-<mat-card>
-  <mat-form-field>
-    <mat-select
-      placeholder="Select room"
-      [formControl]="roomControl"
-      [(ngModel)]="selectedRoom"
-      (ngModelChange)="selectedVent = null"
-    >
+  <mat-card>
+    <mat-form-field>
+      <mat-select
+        placeholder="Select room"
+        [formControl]="roomControl"
+        [(ngModel)]="selectedRoom"
+        (ngModelChange)="selectedVent = null"
+      >
 
-      <ng-container *ngFor="let room of rooms">
-        <mat-option [value]="room.roomId">
-          {{room.roomName}}
-        </mat-option>
-      </ng-container>
+        <ng-container *ngFor="let room of rooms">
+          <mat-option [value]="room.roomId">
+            {{room.roomName}}
+          </mat-option>
+        </ng-container>
 
-    </mat-select>
-  </mat-form-field>
-</mat-card>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
 
-<br>
+  <br>
 
-<mat-card>
-  <mat-form-field>
-    <mat-select [disabled]="!selectedRoom"
-      placeholder="Select vent"
-      [formControl]="ventControl"
-      [(ngModel)]="selectedVent"
-    >
+  <mat-card>
+    <mat-form-field>
+      <mat-select [disabled]="!selectedRoom"
+                  placeholder="Select vent"
+                  [formControl]="ventControl"
+                  [(ngModel)]="selectedVent"
+      >
 
-      <ng-container *ngFor="let vent of vents">
-        <mat-option *ngIf="vent.roomId === selectedRoom" [value]="vent.ventId">
-          {{vent.ventNumber}}
-        </mat-option>
-      </ng-container>
+        <ng-container *ngFor="let vent of vents">
+          <mat-option *ngIf="vent.roomId === selectedRoom" [value]="vent.ventId">
+            {{vent.ventNumber}}
+          </mat-option>
+        </ng-container>
 
-    </mat-select>
-  </mat-form-field>
-</mat-card>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
 
-<button type="submit"
-  mat-raised-button
-        *ngIf="selectedVent"
-        (click)="updateUserVent()"
->
-  Next
-</button>
+  <button type="submit"
+          mat-raised-button
+          *ngIf="selectedVent"
+          (click)="updateUserVent()"
+  >
+    Next
+  </button>
 </div>

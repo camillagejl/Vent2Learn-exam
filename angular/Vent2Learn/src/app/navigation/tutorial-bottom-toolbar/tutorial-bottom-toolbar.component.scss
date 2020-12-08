@@ -1,0 +1,27 @@
+mat-toolbar {
+  height: 40px;
+  box-shadow: var(--main-box-shadow-revert);
+  background-color: rgb(var(--main-color-600));
+  //padding: var(--main-margin);
+  color: rgb(var(--main-color-100));
+}
+
+button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  color: rgb(var(--main-color-100));
+  padding: 0;
+}
+
+span {
+  font-size: 14px;
+}
+
+svg {
+  height: 30px;
+  padding-left: 6px;
+  transform: rotate(180deg);
+}

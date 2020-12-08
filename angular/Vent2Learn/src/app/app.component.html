@@ -1,19 +1,26 @@
 <!-- Top nav does not show on the login page.
 More pages can be added in app.component.ts -->
 
-<app-top-toolbar *ngIf="displayToolbars"></app-top-toolbar>
+<app-top-toolbar *ngIf="displayTopToolbar"></app-top-toolbar>
 
-<div class="top-circle">
+<div
+  *ngIf="displayCircles"
+  class="top-circle"
+>
   <img src="../assets/bottom-circle.png">
 </div>
-
 
 <div class="router-outlet-container">
   <router-outlet></router-outlet>
 </div>
 
-<app-bottom-toolbar *ngIf="displayToolbars"></app-bottom-toolbar>
+<app-bottom-toolbar *ngIf="displayBottomToolbar"></app-bottom-toolbar>
 
-<div class="bottom-circle">
-<img src="../assets/bottom-circle.png">
+<app-tutorial-bottom-toolbar *ngIf="displayTutorialBottomToolbar"></app-tutorial-bottom-toolbar>
+
+<div
+  *ngIf="displayCircles"
+  class="bottom-circle"
+>
+  <img src="../assets/bottom-circle.png">
 </div>

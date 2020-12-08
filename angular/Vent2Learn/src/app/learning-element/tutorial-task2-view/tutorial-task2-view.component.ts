@@ -4,7 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 @Component({
   selector: 'app-tutorial-task2-view',
   templateUrl: './tutorial-task2-view.component.html',
-  styleUrls: ['./tutorial-task2-view.component.scss']
+  styleUrls: ['../tutorial-task1-view/tutorial-task1-view.component.scss'] // Uses same styling as task1
 })
 export class TutorialTask2ViewComponent implements OnInit {
 

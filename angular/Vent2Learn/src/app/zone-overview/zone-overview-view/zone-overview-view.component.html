@@ -1,125 +1,85 @@
-<h1>
-  Your zone
-</h1>
+<div class="view">
+  <h1>
+    Your zone
+  </h1>
 
-<div class="current-values">
-  <app-current-zone-value
-    [props]="{
+  <div class="current-values">
+    <app-current-zone-value
+      [props]="{
     setting: 'Current temperature',
     value: zoneTemperature
     }"
-  ></app-current-zone-value>
+    ></app-current-zone-value>
 
-  <app-current-zone-value
-    [props]="{
+    <app-current-zone-value
+      [props]="{
     setting: 'Current humidity',
     value: zoneHumidity
     }"
-  ></app-current-zone-value>
-</div>
+    ></app-current-zone-value>
+  </div>
 
-<div class="user-settings">
-  <app-setting-level-button
-    (click)="openSettingDialog(userId, 'heatingLevel')"
-    (someEvent)="findZoneUsers($event)"
-    [props]="
+  <div class="user-settings">
+    <app-setting-level-button
+      (click)="openSettingDialog(userId, 'heatingLevel')"
+      (someEvent)="findZoneUsers($event)"
+      [props]="
 {
 setting: 'Heating level',
 value: {value: userHeatingLevel},
 editText: 'Edit heating'
 }"
-  ></app-setting-level-button>
+    ></app-setting-level-button>
 
-  <app-setting-level-button
-    (click)="openSettingDialog(userId, 'ventilationLevel')"
-    [props]="
+    <app-setting-level-button
+      (click)="openSettingDialog(userId, 'ventilationLevel')"
+      [props]="
 {
 setting: 'Ventilation level',
 value: {value: userVentilationLevel},
 editText: 'Edit ventilation'
 }"
-  ></app-setting-level-button>
+    ></app-setting-level-button>
 
-  <app-setting-level-button
-    *ngIf="room && vent"
-    [props]="
+    <app-setting-level-button
+      *ngIf="room && vent"
+      [props]="
 {
 setting: 'Zone',
 value: {roomName: room.roomName, ventNumber: vent.ventNumber},
 editText: 'Select new zone'
 }"
-  ></app-setting-level-button>
+    ></app-setting-level-button>
 
-  <app-setting-level-button
-    *ngIf="room && vent"
-    [props]="
+    <app-setting-level-button
+      *ngIf="room && vent"
+      [props]="
 {
 setting: 'Leaving time',
 value: {value: user.leavingTime.substring(1,5)},
 editText: 'Change time'
 }"
-  ></app-setting-level-button>
+    ></app-setting-level-button>
+  </div>
+
+  <div
+    *ngIf="currentTooltip"
+    class="tooltip"
+  >
+    <h3>
+      Feeling a bit off?
+    </h3>
+
+    <p class="short-tooltip">
+      {{ currentTooltip.shortTip }}
+    </p>
+
+    <button
+      (click)="openTooltipDialog(currentTooltip.longTip)"
+      class="read-more-button">
+      Read more...
+    </button>
+
+  </div>
+
 </div>
-
-<div
-  *ngIf="currentTooltip"
-  class="tooltip"
->
-  <h3>
-    Feeling a bit off?
-  </h3>
-
-  <p class="short-tooltip">
-    {{ currentTooltip.shortTip }}
-  </p>
-
-  <button
-    (click)="openTooltipDialog(currentTooltip.longTip)"
-    class="read-more-button">
-    Read more...
-  </button>
-
-</div>
-
-<!--<div>-->
-<!--  <p>Heating Level</p>-->
-<!--  <mat-slider vertical-->
-<!--              tickInterval="1"-->
-<!--              step="1"-->
-<!--              min="0"-->
-<!--              max="10"-->
-<!--              [(ngModel)]="userHeatingLevel"-->
-<!--              (ngModelChange)="updateUserLevel('heatingLevel', 'userHeatingLevel')"-->
-<!--  >-->
-<!--  </mat-slider>-->
-
-<!--  <p>Ventilation Level</p>-->
-<!--  <mat-slider vertical-->
-<!--              tickInterval="1"-->
-<!--              step="1"-->
-<!--              min="0"-->
-<!--              max="10"-->
-<!--              [(ngModel)]="userVentilationLevel"-->
-<!--              (ngModelChange)="updateUserLevel('ventilationLevel', 'userVentilationLevel')"-->
-<!--  >-->
-<!--  </mat-slider>-->
-
-<!--</div>-->
-
-<!--<div *ngIf="user">-->
-<!--  <p>-->
-<!--    The below don't update if you update the values in the slider, only on reload. We can make this work, but I didn't-->
-<!--    want to spend time on it if we're not going to use it.-->
-<!--  </p>-->
-<!--  <b>-->
-<!--    Your heating level: {{user.heatingLevel}}-->
-<!--    <br>-->
-<!--    Your ventilation level: {{user.ventilationLevel}}-->
-<!--  </b>-->
-<!--  <br>-->
-<!--</div>-->
-
-<!--<br>-->
-<!--<b>-->
-<!--  Tooltip:-->
-<!--</b>-->

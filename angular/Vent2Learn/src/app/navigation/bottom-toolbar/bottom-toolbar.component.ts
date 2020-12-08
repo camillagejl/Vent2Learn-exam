@@ -27,7 +27,7 @@ export class BottomToolbarComponent implements OnInit {
       if (params["userId"]) {
       this.userId = params["userId"];
       }
-      console.log("UserId:", this.userId);
+      // console.log("UserId:", this.userId);
     });
 
     this.router.events.subscribe(event => {
@@ -54,8 +54,6 @@ export class BottomToolbarComponent implements OnInit {
       } else {
         this.currentRouteGroup = null;
       }
-
-      console.log("currentRouteGroup", this.currentRouteGroup)
 
     });
   }

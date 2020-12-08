@@ -12,6 +12,8 @@ import {ZoneOverviewModule} from "./zone-overview/zone-overview.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavigationModule} from "./navigation/navigation.module";
 import {TimeSelectionModule} from "./time-selection/time-selection.module";
+import {SettingsModule} from "./settings/settings.module";
+import {AboutModule} from "./about/about.module";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {TimeSelectionModule} from "./time-selection/time-selection.module";
     ZoneOverviewModule,
     BrowserAnimationsModule,
     NavigationModule,
-    TimeSelectionModule
+    TimeSelectionModule,
+    SettingsModule,
+    AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

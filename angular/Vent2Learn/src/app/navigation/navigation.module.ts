@@ -5,12 +5,14 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { BottomToolbarComponent } from './bottom-toolbar/bottom-toolbar.component';
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
+import { TutorialBottomToolbarComponent } from './tutorial-bottom-toolbar/tutorial-bottom-toolbar.component';
 
 @NgModule({
-  declarations: [TopToolbarComponent, BottomToolbarComponent],
+  declarations: [TopToolbarComponent, BottomToolbarComponent, TutorialBottomToolbarComponent],
   exports: [
     TopToolbarComponent,
-    BottomToolbarComponent
+    BottomToolbarComponent,
+    TutorialBottomToolbarComponent
   ],
   imports: [
     CommonModule,

@@ -6,7 +6,9 @@ app-top-toolbar {
   right: 0;
 }
 
-app-bottom-toolbar {
+app-bottom-toolbar,
+app-tutorial-bottom-toolbar
+{
   z-index: 100;
   position: fixed;
   bottom: 0;
@@ -22,7 +24,6 @@ app-bottom-toolbar {
   position: absolute;
   right: 0;
 }
-
 
 .top-circle {
   transform: rotate(180deg);

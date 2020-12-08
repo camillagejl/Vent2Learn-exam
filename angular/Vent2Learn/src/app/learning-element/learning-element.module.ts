@@ -8,6 +8,7 @@ import { TutorialEndingViewComponent } from './tutorial-ending-view/tutorial-end
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
 import { ModalContentComponent } from './tutorial-task1-view/modal-content/modal-content.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ModalContentComponent } from './tutorial-task1-view/modal-content/modal
   imports: [
     CommonModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatToolbarModule
   ]
 })
 export class LearningElementModule { }
