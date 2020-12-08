@@ -34,14 +34,36 @@
     </div>
   </div>
 
-  <div class="zone-values">
-    {{ zoneTemperature }}, {{ zoneHumidity }}
+  <div class="card-grid zone-values">
+    <mat-card>
+      <strong>
+        Temperature
+      </strong>
+      <p>
+        Current: {{ zoneTemperature }}
+      </p>
+      <p *ngIf="targetTemperature">
+        Target: {{ targetTemperature }}
+      </p>
+    </mat-card>
+
+    <mat-card>
+      <strong>
+        Humidity
+      </strong>
+      <p>
+        Current: {{ zoneHumidity }}
+      </p>
+      <p *ngIf="targetHumidity">
+        Target: {{ targetHumidity }}
+      </p>
+    </mat-card>
   </div>
 
   <br>
   <button
     class="full_width uppercase"
-    *ngIf="zoneTemperature >= 22 && zoneTemperature < 23"
+    *ngIf="zoneTemperature >= targetTemperature && zoneTemperature < targetTemperature + 1"
     mat-raised-button
     color="primary"
     [routerLink]="['/tutorial-task-2', userId]"
@@ -52,7 +74,7 @@
   <button
     disabled
     class="full_width uppercase"
-    *ngIf="zoneTemperature < 22 || zoneTemperature >= 23"
+    *ngIf="zoneTemperature < targetTemperature || zoneTemperature >= targetTemperature + 1"
     mat-raised-button
   >
     It's not quite there yet

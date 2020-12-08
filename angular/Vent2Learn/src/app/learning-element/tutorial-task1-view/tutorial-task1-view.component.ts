@@ -24,6 +24,9 @@ export class TutorialTask1ViewComponent implements OnInit {
   zoneTemperature;
   zoneHumidity;
 
+  targetTemperature = 22;
+  targetHumidity = null;
+
   constructor(
     private airCalculationsService: AirCalculationsService,
     public dialog: MatDialog,

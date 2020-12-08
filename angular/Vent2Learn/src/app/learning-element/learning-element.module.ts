@@ -12,6 +12,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSliderModule} from "@angular/material/slider";
 import {FormsModule} from "@angular/forms";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {FormsModule} from "@angular/forms";
     MatToolbarModule,
     MatDialogModule,
     MatSliderModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   ]
 })
 export class LearningElementModule { }

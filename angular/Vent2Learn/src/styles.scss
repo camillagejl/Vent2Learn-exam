@@ -140,3 +140,8 @@ hr {
   max-width: 45px;
   width: fit-content;
 }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
