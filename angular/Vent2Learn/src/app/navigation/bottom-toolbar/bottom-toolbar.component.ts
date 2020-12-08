@@ -9,9 +9,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class BottomToolbarComponent implements OnInit {
 
-  userId = 1; // Found from the URL parameter.
+  userId: any; // Found from the path
 
-  currentRouteGroup;
+  currentRouteGroup = 'vent';
 
   constructor(
     private _route: ActivatedRoute,
@@ -21,17 +21,10 @@ export class BottomToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Finds the userId parameter from the URL. Except it doesn't work!
-    this._route.params.subscribe(params => {
-      // The userId will only be updated if it finds a userId in the parameter - otherwise, it'll stay at 1.
-      if (params["userId"]) {
-      this.userId = params["userId"];
-      }
-      // console.log("UserId:", this.userId);
-    });
+
+    this.setUserId();
 
     this.router.events.subscribe(event => {
-
       let currentRoute;
       currentRoute = this.location.path(); // Finds the current router location
 
@@ -56,5 +49,18 @@ export class BottomToolbarComponent implements OnInit {
       }
 
     });
+
+    console.log("RouterGroup", this.currentRouteGroup);
+
   }
+
+  setUserId() {
+    // Splits the path so we can find the userId.
+    // In our current routes, the array will contain of:
+    // [0] = "", because there is nothing before the first /
+    // [1] = the path (e.g. 'login')
+    // [2] = userId, the thing after the last /
+    this.userId = this.location.path().split('/')[2];
+  };
+
 }

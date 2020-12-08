@@ -3,12 +3,14 @@
     Your zone
   </h1>
 
+  <!--===== Current values in the zone =====-->
   <div class="current-values">
     <app-current-zone-value
-      [props]="{
-    setting: 'Current temperature',
-    value: zoneTemperature
-    }"
+      [props]="
+      {
+        setting: 'Current temperature',
+        value: zoneTemperature
+      }"
     ></app-current-zone-value>
 
     <app-current-zone-value
@@ -19,49 +21,7 @@
     ></app-current-zone-value>
   </div>
 
-  <div class="user-settings">
-    <app-setting-level-button
-      (click)="openSettingDialog(userId, 'heatingLevel')"
-      (someEvent)="findZoneUsers($event)"
-      [props]="
-{
-setting: 'Heating level',
-value: {value: userHeatingLevel},
-editText: 'Edit heating'
-}"
-    ></app-setting-level-button>
-
-    <app-setting-level-button
-      (click)="openSettingDialog(userId, 'ventilationLevel')"
-      [props]="
-{
-setting: 'Ventilation level',
-value: {value: userVentilationLevel},
-editText: 'Edit ventilation'
-}"
-    ></app-setting-level-button>
-
-    <app-setting-level-button
-      *ngIf="room && vent"
-      [props]="
-{
-setting: 'Zone',
-value: {roomName: room.roomName, ventNumber: vent.ventNumber},
-editText: 'Select new zone'
-}"
-    ></app-setting-level-button>
-
-    <app-setting-level-button
-      *ngIf="room && vent"
-      [props]="
-{
-setting: 'Leaving time',
-value: {value: user.leavingTime.substring(1,5)},
-editText: 'Change time'
-}"
-    ></app-setting-level-button>
-  </div>
-
+  <!--===== Tooltip, if relevant =====-->
   <div
     *ngIf="currentTooltip"
     class="tooltip"
@@ -79,7 +39,50 @@ editText: 'Change time'
       class="read-more-button">
       Read more...
     </button>
+  </div>
 
+
+  <!--===== User's current settings =====-->
+  <div class="user-settings">
+    <app-setting-level-button
+      (click)="openSettingDialog(userId, 'heatingLevel')"
+      [props]="
+        {
+          setting: 'Heating level',
+          value: {value: userHeatingLevel},
+          editText: 'Edit heating'
+        }"
+    ></app-setting-level-button>
+
+    <app-setting-level-button
+      (click)="openSettingDialog(userId, 'ventilationLevel')"
+      [props]="
+        {
+          setting: 'Ventilation level',
+          value: {value: userVentilationLevel},
+          editText: 'Edit ventilation'
+        }
+    "></app-setting-level-button>
+
+    <app-setting-level-button
+      *ngIf="room && vent"
+      [props]="
+      {
+        setting: 'Zone',
+        value: {roomName: room.roomName, ventNumber: vent.ventNumber},
+        editText: 'Select new zone'
+      }
+    "></app-setting-level-button>
+
+    <app-setting-level-button
+      *ngIf="room && vent"
+      [props]="
+        {
+          setting: 'Leaving time',
+          value: {value: user.leavingTime.substring(1,5)},
+          editText: 'Change time'
+        }
+    "></app-setting-level-button>
   </div>
 
 </div>

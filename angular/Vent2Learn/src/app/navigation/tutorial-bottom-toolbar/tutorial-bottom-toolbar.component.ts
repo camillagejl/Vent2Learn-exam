@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-tutorial-bottom-toolbar',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutorialBottomToolbarComponent implements OnInit {
 
-  constructor() { }
+  userId: any; // Found from the path
 
-  ngOnInit(): void {
+  constructor(
+    private location: Location
+  ) { }
+
+  ngOnInit() {
+    this.setUserId();
   }
+
+  setUserId() {
+    // Splits the path so we can find the userId.
+    // In our current routes, the array will contain of:
+    // [0] = "", because there is nothing before the first /
+    // [1] = the path (e.g. 'login')
+    // [2] = userId, the thing after the last /
+    this.userId = this.location.path().split('/')[2];
+  };
 
 }
