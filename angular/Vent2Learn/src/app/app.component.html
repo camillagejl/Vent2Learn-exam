@@ -11,7 +11,10 @@ More pages can be added in app.component.ts -->
   <img src="../assets/bottom-circle.png">
 </div>
 
-<div class="router-outlet-container">
+<div
+  class="router-outlet-container"
+  [ngClass]="{'circles-router-padding': displayCircles}"
+>
   <router-outlet></router-outlet>
 </div>
 
