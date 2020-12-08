@@ -7,12 +7,15 @@ import { TutorialTask1ViewComponent } from './tutorial-task1-view/tutorial-task1
 import { TutorialEndingViewComponent } from './tutorial-ending-view/tutorial-ending-view.component';
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
-import { ModalContentComponent } from './tutorial-task1-view/modal-content/modal-content.component';
+import { TutorialTask1ModalContentComponent } from './tutorial-task1-view/modal-content/tutorial-task1-modal-content.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSliderModule} from "@angular/material/slider";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
-  declarations: [MathTestComponent, TutorialStartingViewComponent, TutorialTask2ViewComponent, TutorialTask1ViewComponent, TutorialEndingViewComponent, ModalContentComponent],
+  declarations: [MathTestComponent, TutorialStartingViewComponent, TutorialTask2ViewComponent, TutorialTask1ViewComponent, TutorialEndingViewComponent, TutorialTask1ModalContentComponent],
   exports: [
     MathTestComponent
   ],
@@ -20,7 +23,10 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     CommonModule,
     MatButtonModule,
     RouterModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule,
+    MatSliderModule,
+    FormsModule
   ]
 })
 export class LearningElementModule { }

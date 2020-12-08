@@ -1,11 +1,27 @@
 <div class="view">
-  This is the first task
+  <h1>
+    Task 1: Get a temperature of 22 degrees
+  </h1>
 
-<button
-  mat-raised-button
-  [routerLink]="['/tutorial-task-2', userId]"
->
-  Finish it!
-</button>
+  {{ setting }}: {{ users[0][setting] }}
+
+  <button (click)="setting = 'ventilationLevel'">Ventilation</button>
+  <button (click)="setting = 'heatingLevel'">Heating</button>
+
+  <mat-slider vertical
+              tickInterval="1"
+              step="1"
+              min="0"
+              max="10"
+              [(ngModel)]="users[0][setting]"
+  >
+  </mat-slider>
+
+  <!--  <button-->
+  <!--    mat-raised-button-->
+  <!--    [routerLink]="['/tutorial-task-2', userId]"-->
+  <!--  >-->
+  <!--    Finish it!-->
+  <!--  </button>-->
 
 </div>

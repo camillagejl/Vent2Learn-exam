@@ -65,9 +65,4 @@ export class SettingLevelDialogComponent implements OnInit {
         });
   }
 
-  testFunction() {
-    console.log("Testing");
-    this.someEvent.emit('retrieveTrue');
-  }
-
 }
