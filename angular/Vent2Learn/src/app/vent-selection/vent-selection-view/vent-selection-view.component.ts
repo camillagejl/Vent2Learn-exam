@@ -107,6 +107,7 @@ export class VentSelectionViewComponent implements OnInit {
 
           // Loops over the vents to find the vent the user is/was at, and sets the selectedRoom from the roomId from
           // the vent.
+          if (this.vents) {
           this.vents.forEach(vent => {
             if (vent.ventId === this.selectedVent) {
 
@@ -119,6 +120,7 @@ export class VentSelectionViewComponent implements OnInit {
               })
             }
           });
+          }
 
         },
         error => {

@@ -1,23 +1,28 @@
 <div class="view">
-  <mat-card>
-    <mat-form-field>
-      <mat-select
-        placeholder="Select time"
-        [formControl]="timeControl"
-        [(ngModel)]="selectedTime"
-      >
 
-        <ng-container *ngFor="let time of this.timeStamps">
-          <mat-option
-            [value]="time"
-          >
-            {{ time }}
-          </mat-option>
-        </ng-container>
+  <p>
+    When do you expect to leave?
+  </p>
 
-      </mat-select>
-    </mat-form-field>
-  </mat-card>
+  <mat-form-field
+    appearance="outline"
+  >
+    <mat-label>Select time</mat-label>
+    <mat-select
+      [formControl]="timeControl"
+      [(ngModel)]="selectedTime"
+    >
+
+      <ng-container *ngFor="let time of this.timeStamps">
+        <mat-option
+          [value]="time"
+        >
+          {{ time }}
+        </mat-option>
+      </ng-container>
+
+    </mat-select>
+  </mat-form-field>
 
   <button type="submit"
           mat-raised-button

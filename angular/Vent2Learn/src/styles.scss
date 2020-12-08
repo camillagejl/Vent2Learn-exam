@@ -72,9 +72,10 @@ span {
 }
 
 hr {
-  margin: calc(var(--main-margin)*2) 0;
+  margin: var(--main-margin) 0;
   border: 1px solid rgba(var(--main-color-400), 0.5)
 }
+
 
 .dialog_heading {
   font-size: 16px;

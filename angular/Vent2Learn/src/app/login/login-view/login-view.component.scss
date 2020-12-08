@@ -1,12 +1,12 @@
 .app_title {
   font-weight: bold;
   text-align: center;
+  padding-bottom: calc(var(--main-margin)*2);
 
   &::first-letter {
     color: rgb(var(--main-color-500));
   }
 
-  padding-bottom: 5%;
   font-size: 3rem;
 }
 
@@ -33,9 +33,6 @@ form {
   text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
-  .app_title {
-    padding-bottom: 15%;
-  }
-
+hr {
+  margin: calc(var(--main-margin)*2) 0;
 }
