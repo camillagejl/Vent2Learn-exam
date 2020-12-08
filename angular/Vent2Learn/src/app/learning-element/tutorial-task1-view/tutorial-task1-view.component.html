@@ -1,6 +1,6 @@
 <div class="view">
   <h1>
-    Task 1: Get a temperature of approx. 22 degrees
+    {{ taskHeadline }}
   </h1>
 
   <div class="user-settings">
@@ -61,9 +61,10 @@
   </div>
 
   <br>
+
   <button
     class="full_width uppercase"
-    *ngIf="zoneTemperature >= targetTemperature && zoneTemperature < targetTemperature + 1"
+    *ngIf="nextButton"
     mat-raised-button
     color="primary"
     [routerLink]="['/tutorial-task-2', userId]"
@@ -74,7 +75,7 @@
   <button
     disabled
     class="full_width uppercase"
-    *ngIf="zoneTemperature < targetTemperature || zoneTemperature >= targetTemperature + 1"
+    *ngIf="!nextButton"
     mat-raised-button
   >
     It's not quite there yet

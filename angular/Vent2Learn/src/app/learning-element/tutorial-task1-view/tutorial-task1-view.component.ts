@@ -13,19 +13,25 @@ export class TutorialTask1ViewComponent implements OnInit {
 
   userId; // Found from the URL parameter.
 
+  // ----- Task specific properties - will change from task to task, but starts at task 1 -----
+
+  // Only has one user in array for simplicity for the user, but still uses array to work with the service
+  taskHeadline = 'Task 1: Get a temperature of approx. 22 degrees';
   users = [
     {
       heatingLevel: 1,
       ventilationLevel: 7
     }
   ];
+  targetTemperature = 22;
+  targetHumidity = null;
 
+  // ----- Non-task specific properties -----
   setting = 'heatingLevel';
   zoneTemperature;
   zoneHumidity;
 
-  targetTemperature = 22;
-  targetHumidity = null;
+  nextButton = false;
 
   constructor(
     private airCalculationsService: AirCalculationsService,
@@ -56,5 +62,15 @@ export class TutorialTask1ViewComponent implements OnInit {
   updateZoneValues() {
     this.zoneTemperature = this.airCalculationsService.calculateRoomTemperature(this.users);
     this.zoneHumidity = this.airCalculationsService.calculateRoomHumidity(this.users);
+
+    // Changes the nextButton to true if the temperature and humidity are within the targets, or they have no targets.
+    // Falls if they don't fit this criteria.
+    this.nextButton = (this.zoneTemperature >= this.targetTemperature
+      && this.zoneTemperature < this.targetTemperature + 1
+      || this.targetTemperature === null
+    ) && (
+      this.zoneHumidity >= this.targetHumidity
+      && this.zoneHumidity < this.targetHumidity + 1
+      || this.targetHumidity === null)
   }
 }
