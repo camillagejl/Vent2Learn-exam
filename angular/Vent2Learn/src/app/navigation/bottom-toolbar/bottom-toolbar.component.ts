@@ -12,7 +12,7 @@ export class BottomToolbarComponent implements OnInit {
   userId: any; // Found from the path
   displayNavigation: boolean;
 
-  currentRouteGroup = 'vent';
+  currentRouteGroup;
 
   constructor(
     private _route: ActivatedRoute,

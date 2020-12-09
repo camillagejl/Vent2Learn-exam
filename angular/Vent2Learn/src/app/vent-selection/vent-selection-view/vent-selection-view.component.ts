@@ -26,8 +26,6 @@ export class VentSelectionViewComponent implements OnInit {
   roomControl = new FormControl();
   ventControl = new FormControl();
 
-  options: string[] = ['One', 'Two', 'Three'];
-
   filteredRooms: Observable<string[]>;
 
   private _filter(value: string): string[] {

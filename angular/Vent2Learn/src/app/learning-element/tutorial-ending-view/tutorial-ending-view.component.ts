@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-tutorial-ending-view',
@@ -11,6 +11,7 @@ export class TutorialEndingViewComponent implements OnInit {
   userId; // Found from the URL parameter.
 
   constructor(
+    private router: Router,
     private _route: ActivatedRoute
     ) { }
 
