@@ -5,20 +5,26 @@
 
   <!--===== Current values in the zone =====-->
   <div class="current-values">
-    <app-current-zone-value
-      [props]="
+    <div class="current-temperature">
+      <app-current-zone-value
+        [props]="
       {
         setting: 'Current temperature',
-        value: zoneTemperature
+        value: zoneTemperature,
+unit: '&#176;'
       }"
-    ></app-current-zone-value>
+      ></app-current-zone-value>
+    </div>
 
-    <app-current-zone-value
-      [props]="{
+    <div class="current-humidity">
+      <app-current-zone-value
+        [props]="{
     setting: 'Current humidity',
-    value: zoneHumidity
+    value: zoneHumidity,
+    unit: '%'
     }"
-    ></app-current-zone-value>
+      ></app-current-zone-value>
+    </div>
   </div>
 
   <!--===== Tooltip, if relevant =====-->

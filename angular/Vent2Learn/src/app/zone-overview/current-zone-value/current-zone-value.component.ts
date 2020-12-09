@@ -9,7 +9,8 @@ export class CurrentZoneValueComponent implements OnInit {
 
   @Input() props: {
     setting: string,
-    value: number
+    value: number,
+    unit: string
   };
 
   constructor() { }
