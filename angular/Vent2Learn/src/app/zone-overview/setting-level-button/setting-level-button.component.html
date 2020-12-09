@@ -1,22 +1,25 @@
 <mat-card>
-  <h3>
+  <h3 class="flex_1">
     {{ props.setting }}
   </h3>
 
 <!-- Shows the value if there is only one value (for temperature, humidity and time) -->
   <div
     *ngIf="props.value.value !== null"
-    class="setting-value">
+    class="setting-value flex_2">
     {{ props.value.value }}
   </div>
 
 <!-- Shows the values of roomName and roomNumber for the zone -->
   <div *ngIf="props.value.roomName && props.value.ventNumber"
-    class="setting-value">
+    class="setting-value flex_2">
     {{ props.value.roomName }}-{{ props.value.ventNumber }}
   </div>
 
-  <button mat-raised-button>
+  <button
+    mat-stroked-button
+  class="flex_1 uppercase mat-stroked-button"
+  >
     {{ props.editText }}
   </button>
 </mat-card>

@@ -24,11 +24,28 @@
     </mat-select>
   </mat-form-field>
 
-  <button type="submit"
-          mat-raised-button
-          *ngIf="selectedTime"
-          (click)="updateUserLeavingTime()"
-  >
-    Next
-  </button>
+  <div class="navigate-buttons">
+
+    <button
+            mat-stroked-button
+            class="uppercase mat-stroked-button"
+            color="primary"
+            *ngIf="lastPathClean !== 'time-selection'"
+            [routerLink]="['/' + [lastPathClean], userId]"
+    >
+      Back
+    </button>
+
+    <button type="submit"
+            mat-raised-button
+            class="uppercase"
+            color="primary"
+            *ngIf="selectedTime"
+            (click)="updateUserLeavingTime()"
+    >
+      Next
+    </button>
+
+  </div>
+
 </div>

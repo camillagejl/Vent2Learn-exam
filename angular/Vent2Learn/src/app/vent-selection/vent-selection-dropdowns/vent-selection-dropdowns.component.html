@@ -41,14 +41,32 @@
 
     </mat-select>
   </mat-form-field>
-  <button type="submit"
-          mat-raised-button
-          *ngIf="selectedVent && !dialogUserId"
-          (click)="updateUserVent()"
-  >
-    Next
-  </button>
 
+  <div class="navigate-buttons">
+
+    <button
+      mat-stroked-button
+      class="uppercase mat-stroked-button"
+      color="primary"
+      *ngIf="lastPathClean !== 'login' && lastPathClean !== 'time-selection' && lastPathClean !== 'vent-selection'"
+      [routerLink]="['/' + [lastPathClean], userId]"
+    >
+      Back
+    </button>
+
+    <button type="submit"
+            mat-raised-button
+            class="uppercase"
+            color="primary"
+            *ngIf="selectedVent && !dialogUserId"
+            (click)="updateUserVent()"
+    >
+      Next
+    </button>
+
+  </div>
+
+<!-- For if we get the dialog working for selecting from ZoneOverview -->
 <!--  <div-->
 <!--    mat-dialog-actions-->
 <!--    align="end"-->

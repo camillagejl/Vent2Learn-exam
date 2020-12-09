@@ -8,6 +8,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {BrowserModule} from "@angular/platform-browser";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [TimeSelectionViewComponent],
@@ -19,7 +20,8 @@ import {BrowserModule} from "@angular/platform-browser";
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    RouterModule
   ]
 })
 export class TimeSelectionModule {

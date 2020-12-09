@@ -11,6 +11,7 @@ import {MatInputModule} from "@angular/material/input";
 import {VentSelectionDropdownsComponent} from './vent-selection-dropdowns/vent-selection-dropdowns.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {PreviousRouteService} from "../shared-services/previous-route.service";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [VentSelectionViewComponent, VentSelectionDropdownsComponent],
@@ -26,7 +27,8 @@ import {PreviousRouteService} from "../shared-services/previous-route.service";
     MatButtonModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule
   ],
   providers: [PreviousRouteService],
 })

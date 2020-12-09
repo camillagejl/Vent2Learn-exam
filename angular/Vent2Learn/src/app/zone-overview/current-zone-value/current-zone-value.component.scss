@@ -19,6 +19,6 @@ svg {
 }
 
 p {
-  font-size: 24px;
-  margin: calc(var(--main-margin)) 0 0 0;
+  font-size: 30px;
+  margin: calc(var(--main-margin)) calc(var(--main-margin)/2) 0 0;
 }

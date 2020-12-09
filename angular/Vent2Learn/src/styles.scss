@@ -80,6 +80,17 @@ button {
   cursor: pointer;
 }
 
+.navigate-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  button:nth-child(2) {
+    margin-left: var(--main-margin);
+  }
+
+}
+
 .dialog_heading {
   font-size: 16px;
   font-weight: 700;
@@ -125,7 +136,7 @@ button {
 .grid_2_col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: calc(var(--main-margin) / 2)
+  grid-gap: calc(var(--main-margin)/2)
 }
 
 .icon_small {
@@ -141,9 +152,4 @@ button {
 .icon_large {
   max-width: 45px;
   width: fit-content;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }

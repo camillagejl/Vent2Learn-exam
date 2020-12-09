@@ -8,26 +8,32 @@ div {
     margin: 0;
   }
 
-.current-humidity {
-  display: flex;
-  justify-content: flex-end;
+  .current-humidity {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
+
+.mat-stroked-button {
+  border-color: rgb(var(--main-color-500));
+  font-weight: 600;
+}
+
+.view > div {
+  margin-bottom: calc(var(--main-margin)*2);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
 }
 
-.tooltip h3 {
-  font-weight: 700;
-}
+.arrow-down {
+  width: 100%;
+  text-align: center;
+  color: rgb(var(--main-color-500));
 
-.read-more-button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  font-size: 16px;
-  text-decoration: underline;
-}
-
-.short-tooltip,
-.read-more-button {
-  display: inline;
+  svg {
+    height: 30px;
+  }
 }

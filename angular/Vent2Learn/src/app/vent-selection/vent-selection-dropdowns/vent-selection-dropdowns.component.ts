@@ -62,7 +62,7 @@ export class VentSelectionDropdownsComponent implements OnInit {
     // Finds the last path
     this.lastPath = this.previousRouteService.getPreviousUrl();
     this.lastPathClean = this.lastPath.split('/')[1];
-    console.log("last path", this.lastPathClean);
+    console.log('lastPathClean', this.lastPathClean);
 
     this.filteredRooms = this.roomControl.valueChanges.pipe(
       startWith(''),
@@ -126,7 +126,6 @@ export class VentSelectionDropdownsComponent implements OnInit {
 
                 this.rooms.forEach(room => {
                   if (room.roomId === vent.roomId) {
-                    console.log("Selected room!", this.selectedRoom);
                     this.selectedRoom = room;
                     this.selectedRoomName = room.roomName;
                   }

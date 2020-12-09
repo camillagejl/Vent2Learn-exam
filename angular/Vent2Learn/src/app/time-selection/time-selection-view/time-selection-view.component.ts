@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {UsersService} from "../../shared-services/users.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {PreviousRouteService} from "../../shared-services/previous-route.service";
 
 @Component({
   selector: 'app-time-selection-view',
@@ -10,9 +11,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TimeSelectionViewComponent implements OnInit {
 
-
   userId; // Found from the URL parameter.
   user; // The user that is logged in.
+
+  lastPath;
+  lastPathClean;
 
   // The user will have to choose between our hardcoded times below.
   timeStamps = [
@@ -122,7 +125,8 @@ export class TimeSelectionViewComponent implements OnInit {
   constructor(
     private router: Router,
     private _route: ActivatedRoute,
-    private usersService: UsersService
+    private usersService: UsersService,
+  private previousRouteService: PreviousRouteService,
   ) {
   }
 
@@ -131,6 +135,11 @@ export class TimeSelectionViewComponent implements OnInit {
     this._route.params.subscribe(params => {
       this.userId = params["userId"];
     });
+
+    // Finds the last path
+    this.lastPath = this.previousRouteService.getPreviousUrl();
+    this.lastPathClean = this.lastPath.split('/')[1];
+    console.log(this.lastPathClean);
 
     // Finds the user with the userId.
     this.retrieveUser();

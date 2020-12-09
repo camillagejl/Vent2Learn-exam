@@ -1,0 +1,17 @@
+.edit-setting {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.setting-svg {
+  color: rgb(var(--main-color-500));
+  width: 100%;
+  text-align: center;
+}
+
+svg {
+  height: 40px;
+}
