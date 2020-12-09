@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
       const hideCirclesPaths = [
         'login',
         'tutorial-task-1',
-        'tutorial-task-2'
       ];
 
       // Checks if the hideCirclesPaths array includes the path from the split above
@@ -47,8 +46,8 @@ export class AppComponent implements OnInit {
       // Checking if the design circles and bottom toolbar should be displayed.
       const hideBottomToolbarPaths = [
         'login',
+        'first-login',
         'tutorial-task-1',
-        'tutorial-task-2',
         'vent-selection',
         'time-selection'
       ];
