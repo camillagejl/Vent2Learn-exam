@@ -1,0 +1,27 @@
+<div class="view">
+  <div class="app_title">
+    Vent2Learn
+  </div>
+
+  <div class="navigate-buttons">
+    <button
+      mat-stroked-button
+      class="uppercase mat-stroked-button"
+      color="primary"
+      (click)="openSkippingDialog()"
+    >
+      Skip tutorial
+    </button>
+
+    <button type="submit"
+            mat-raised-button
+            class="uppercase"
+            color="primary"
+            [routerLink]="['/tutorial-starting', userId]"
+    >
+      Start tutorial
+    </button>
+
+  </div>
+
+</div>

@@ -9,9 +9,11 @@ import {TutorialStartingViewComponent} from "./learning-element/tutorial-startin
 import {AboutViewComponent} from "./about/about-view/about-view.component";
 import {TutorialTaskViewComponent} from "./learning-element/tutorial-task1-view/tutorial-task-view.component";
 import {TutorialEndingViewComponent} from "./learning-element/tutorial-ending-view/tutorial-ending-view.component";
+import {FirstLoginViewComponent} from "./login/first-login-view/first-login-view.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginViewComponent},
+  {path: 'first-login/:userId', component: FirstLoginViewComponent},
   {path: 'vent-selection/:userId', component: VentSelectionViewComponent},
   {path: 'time-selection/:userId', component: TimeSelectionViewComponent},
   {path: 'zone-overview/:userId', component: ZoneOverviewViewComponent},
@@ -21,9 +23,8 @@ const routes: Routes = [
   {path: 'tutorial-starting/:userId', component: TutorialStartingViewComponent},
   {path: 'tutorial-task-1/:userId', component: TutorialTaskViewComponent},
   {path: 'tutorial-ending/:userId', component: TutorialEndingViewComponent},
+
   {path: 'about/:userId', component: AboutViewComponent},
-
-
   {path: '**', redirectTo: '/login'}, // When no route is defined, the app will display the login page.
 
 ];

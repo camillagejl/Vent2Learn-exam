@@ -1,0 +1,16 @@
+.app_title {
+  font-weight: bold;
+  text-align: center;
+  padding: calc(var(--main-margin)*2) 0;
+
+  &::first-letter {
+    color: rgb(var(--main-color-500));
+  }
+
+  font-size: 3rem;
+}
+
+.mat-stroked-button {
+  border-color: rgb(var(--main-color-500));
+  font-weight: 600;
+}

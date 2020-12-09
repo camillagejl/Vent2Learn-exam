@@ -11,14 +11,13 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatSliderModule} from "@angular/material/slider";
 import {FormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
-import { TutorialTask2ModalContentComponent } from './tutorial-task1-view/tutorial-task2-modal-content/tutorial-task2-modal-content.component';
-import { TutorialTask3ModalContentComponent } from './tutorial-task1-view/tutorial-task3-modal-content/tutorial-task3-modal-content.component';
-import { TutorialTask4ModalContentComponent } from './tutorial-task1-view/tutorial-task4-modal-content/tutorial-task4-modal-content.component';
+import {TutorialTask2ModalContentComponent} from "./tutorial-task1-view/tutorial-task2-modal-content/tutorial-task2-modal-content.component";
+import {TutorialTask3ModalContentComponent} from "./tutorial-task1-view/tutorial-task3-modal-content/tutorial-task3-modal-content.component";
+import {TutorialTask4ModalContentComponent} from "./tutorial-task1-view/tutorial-task4-modal-content/tutorial-task4-modal-content.component";
 
 @NgModule({
   declarations: [TutorialStartingViewComponent, TutorialTaskViewComponent, TutorialEndingViewComponent, TutorialTask1ModalContentComponent, TutorialTask2ModalContentComponent, TutorialTask3ModalContentComponent, TutorialTask4ModalContentComponent],
-  exports: [
-  ],
+  exports: [],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -30,5 +29,5 @@ import { TutorialTask4ModalContentComponent } from './tutorial-task1-view/tutori
     MatCardModule
   ]
 })
-export class LearningElementModule {
+export class TutorialModule {
 }

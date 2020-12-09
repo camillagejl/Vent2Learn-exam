@@ -9,10 +9,12 @@ import {MatIconModule} from "@angular/material/icon";
 import {AppRoutingModule} from "../app-routing.module";
 import { LoginInfoDialogComponent } from './login-info-dialog/login-info-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { FirstLoginViewComponent } from './first-login-view/first-login-view.component';
+import { SkippingDialogComponent } from './first-login-view/skipping-dialog/skipping-dialog.component';
 
 
 @NgModule({
-  declarations: [LoginViewComponent, LoginInfoDialogComponent],
+  declarations: [LoginViewComponent, LoginInfoDialogComponent, FirstLoginViewComponent, SkippingDialogComponent],
   exports: [
     LoginViewComponent
   ],

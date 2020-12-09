@@ -1,0 +1,42 @@
+<div mat-dialog-title>
+  Are you sure?
+</div>
+
+<div mat-dialog-content>
+
+  <p>
+    Our tutorial will make it easier to find just the right indoor climate for you.
+  </p>
+
+  <p>
+    You can always find the tutorial in the 'Help' section.
+  </p>
+
+  <div
+    mat-dialog-actions
+    align="end"
+  >
+
+    <div class="navigate-buttons">
+      <button
+        mat-stroked-button
+        mat-dialog-close
+        class="uppercase mat-stroked-button"
+        color="primary"
+      >
+        Back
+      </button>
+
+      <button type="submit"
+              mat-raised-button
+              mat-dialog-close
+              class="uppercase"
+              color="primary"
+              [routerLink]="['vent-selection', userId]"
+      >
+        I'm sure - go on
+      </button>
+
+    </div>
+  </div>
+</div>
