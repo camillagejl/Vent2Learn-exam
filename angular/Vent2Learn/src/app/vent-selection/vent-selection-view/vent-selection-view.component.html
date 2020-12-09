@@ -4,57 +4,6 @@
     Where are you sitting?
   </p>
 
-  <form
-    *ngIf="rooms && vents"
-    [formGroup]="" class="example-form"
-  >
-    <mat-form-field
-      appearance="outline"
-      class="example-full-width"
-    >
-      <mat-label>Select room</mat-label>
-      <input type="text"
-             (click)="selectedRoomName = ''"
-             aria-label="Number"
-             matInput
-             [formControl]="roomControl"
-             [matAutocomplete]="auto"
-             [(ngModel)]="selectedRoomName"
-             (ngModelChange)="updateRoom()"
-             #selectRoom
-      >
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let room of filteredRooms | async" [value]="room.roomName">
-          {{room.roomName}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+  <app-vent-selection-dropdowns></app-vent-selection-dropdowns>
 
-    <mat-form-field
-      appearance="outline"
-    >
-      <mat-label>Select vent</mat-label>
-      <mat-select [disabled]="!selectedRoom"
-                  [formControl]="ventControl"
-                  [(ngModel)]="selectedVent"
-      >
-
-        <ng-container *ngFor="let vent of vents">
-          <mat-option *ngIf="selectedRoom && vent.roomId === selectedRoom.roomId" [value]="vent.ventId">
-            {{vent.ventNumber}}
-          </mat-option>
-        </ng-container>
-
-      </mat-select>
-    </mat-form-field>
-
-  </form>
-
-  <button type="submit"
-          mat-raised-button
-          *ngIf="selectedVent"
-          (click)="updateUserVent()"
-  >
-    Next
-  </button>
 </div>

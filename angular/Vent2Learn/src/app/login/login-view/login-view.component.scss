@@ -1,7 +1,7 @@
 .app_title {
   font-weight: bold;
   text-align: center;
-  padding-bottom: calc(var(--main-margin)*2);
+  padding: calc(var(--main-margin)*2) 0;
 
   &::first-letter {
     color: rgb(var(--main-color-500));

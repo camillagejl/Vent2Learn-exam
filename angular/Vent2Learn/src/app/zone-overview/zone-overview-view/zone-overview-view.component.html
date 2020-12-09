@@ -66,6 +66,7 @@
 
     <app-setting-level-button
       *ngIf="room && vent"
+      [routerLink]="['/vent-selection', userId]"
       [props]="
       {
         setting: 'Zone',
@@ -76,10 +77,11 @@
 
     <app-setting-level-button
       *ngIf="room && vent"
+      [routerLink]="['/time-selection', userId]"
       [props]="
         {
           setting: 'Leaving time',
-          value: {value: user.leavingTime.substring(1,5)},
+          value: {value: user.leavingTime.substring(0,5)},
           editText: 'Change time'
         }
     "></app-setting-level-button>

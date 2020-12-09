@@ -7,6 +7,7 @@ import {AirCalculationsService} from "../../shared-services/air-calculations.ser
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {TooltipDialogComponent} from "../tooltip-dialog/tooltip-dialog.component";
 import {SettingLevelDialogComponent} from "../setting-level-dialog/setting-level-dialog.component";
+import {VentSelectionDialogComponent} from "../vent-selection-dialog/vent-selection-dialog.component";
 
 @Component({
   selector: 'app-zone-overview-view',
@@ -130,8 +131,7 @@ export class ZoneOverviewViewComponent implements OnInit {
     );
 
     // This function retrieves the user and goes on to calculate the current temperature and humidity.
-    this
-      .retrieveUser();
+    this.retrieveUser();
   }
 
   retrieveUser() {
@@ -278,5 +278,23 @@ export class ZoneOverviewViewComponent implements OnInit {
       this.findZoneUsers('retrieveTrue');
     });
   }
+
+  // Should open the selectVentDialog - but it doesn't live update the values, so dropping it for now
+
+  // openVentDialog() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.autoFocus = false;
+  //
+  //   dialogConfig.data = {
+  //     userId: this.userId,
+  //   };
+  //
+  //   let dialogRef = this.dialog.open(VentSelectionDialogComponent, dialogConfig);
+  //
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     this.retrieveRoom();
+  //     console.log(this.room.name);
+  //   });
+  // }
 
 }

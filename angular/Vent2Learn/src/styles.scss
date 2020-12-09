@@ -68,7 +68,7 @@ span {
 }
 
 .view {
-  min-height: calc(100vh - var(--main-margin)*2 - 147px*2 - 75px + 56px)
+  min-height: calc(100vh - var(--main-margin)*2 - 147px*2 - 96px + 56px*2)
 }
 
 hr {
@@ -76,6 +76,9 @@ hr {
   border: 1px solid rgba(var(--main-color-400), 0.5)
 }
 
+button {
+  cursor: pointer;
+}
 
 .dialog_heading {
   font-size: 16px;
@@ -129,7 +132,6 @@ hr {
   max-width: 20px;
   width: fit-content;
 }
-
 
 .icon_medium {
   max-width: 25px;

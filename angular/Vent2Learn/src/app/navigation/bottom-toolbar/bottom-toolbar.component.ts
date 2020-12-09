@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class BottomToolbarComponent implements OnInit {
 
   userId: any; // Found from the path
+  displayNavigation: boolean;
 
   currentRouteGroup = 'vent';
 
@@ -52,6 +53,27 @@ export class BottomToolbarComponent implements OnInit {
 
     console.log("RouterGroup", this.currentRouteGroup);
 
+    this.router.events.subscribe(event => {
+
+      // Splits the path, so we can find the path without the userId (since this varies).
+      // The result of this path is an array:
+      // [0] = "", because there is nothing before the first /
+      // [1] = the path (e.g. 'login')
+      // [2] = userId, the thing after the last /
+      // We only use [1] in this array.
+      const thisPath = this.location.path().split('/')[1];
+
+      // Checking if the 'Leave tutorial' bottom toolbar should be displayed.
+      const hideNavigationPaths = [
+        'vent-selection',
+        'time-selection'
+      ];
+
+      // Checks if the tutorialPaths array includes the path from the split above
+      this.displayNavigation = !hideNavigationPaths.includes(thisPath);
+
+    });
+
   }
 
   setUserId() {
@@ -62,5 +84,7 @@ export class BottomToolbarComponent implements OnInit {
     // [2] = userId, the thing after the last /
     this.userId = this.location.path().split('/')[2];
   };
+
+
 
 }
