@@ -1,0 +1,35 @@
+name: 🚀 Deploy website on push
+
+on:
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2.3.2
+
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build
+        working-directory: ./angular/Vent2Learn
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: linux348.unoeuro.com
+          username: camilladilling.com
+          password: ${{ secrets.ftp_password }}
+          # Folder to upload from, must end with trailing slash /
+          local-dir: ./angular/Vent2Learn/dist/Vent2Learn/
+          # Path to upload to on the server. Must end with trailing slash /
+          server-dir: public_html/vent2learn-exam/
+          # Deletes ALL contents of server-dir, even items in excluded with exclude argument
+          dangerous-clean-slate: true
