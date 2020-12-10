@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-const baseUrl = 'http://localhost:8080/api/vents';
+// const baseUrl = 'http://localhost:8080/api/vents';
+const baseUrl = 'https://vent2learn-node.herokuapp.com/api/vents';
 @Injectable({
   providedIn: 'root'
 })
