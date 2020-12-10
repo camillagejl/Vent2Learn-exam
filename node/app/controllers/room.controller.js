@@ -42,7 +42,7 @@ exports.findAll = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message || "Some error occurred while retrieving rooms."
             });
         });
 
@@ -58,7 +58,7 @@ exports.findOne = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Room with id=" + id
+                message: "Error retrieving Room with id=" + id + ": " + err
             });
         });
 
@@ -85,7 +85,7 @@ exports.update = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Room with id=" + id
+                message: "Error updating Room with id=" + id + ": " + err
             });
         });
 
