@@ -4,7 +4,7 @@
   "description": "Node.js Rest Apis with Express, Sequelize & MySQL.",
   "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +15,9 @@
     "rest",
     "api"
   ],
+  "engines": {
+    "node": "12.11.1"
+  },
   "author": "stje",
   "license": "ISC",
   "dependencies": {
