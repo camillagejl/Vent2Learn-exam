@@ -184,6 +184,7 @@ export class ZoneOverviewViewComponent implements OnInit {
   }
 
   findZoneUsers(retrieve) {
+    console.log("Emitting");
     this.usersService.getAll()
       .subscribe(
         (data: Array<any>) => {
@@ -197,7 +198,10 @@ export class ZoneOverviewViewComponent implements OnInit {
               zoneUsers.push(user);
             }
 
+            console.log("This doesn't fit fits", user.userId, this.userId);
+
             if (user.userId === this.userId) {
+              console.log("This fits", user.userId, this.userId);
               this.userHeatingLevel = user.heatingLevel;
               this.userVentilationLevel = user.ventilationLevel;
             }

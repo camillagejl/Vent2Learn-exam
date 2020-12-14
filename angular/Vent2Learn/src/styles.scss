@@ -77,10 +77,6 @@ hr {
   border: 1px solid rgba(var(--main-color-400), 0.5)
 }
 
-h1 {
-  text-align: center;
-}
-
 button {
   cursor: pointer;
 }
@@ -157,22 +153,4 @@ button {
 .icon_large {
   max-width: 45px;
   width: fit-content;
-}
-
-.app_title {
-  text-align: center;
-  padding: calc(var(--main-margin)*2) 0;
-  font-size: 48px;
-
-  .letter-blue {
-    color: rgb(var(--main-color-500));
-  }
-
-  .letter-large {
-    font-size: 60px;
-  }
-
-  .letter-bold {
-    font-weight: 700;
-  }
 }

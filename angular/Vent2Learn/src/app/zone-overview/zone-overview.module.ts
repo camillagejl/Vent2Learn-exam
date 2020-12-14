@@ -13,7 +13,6 @@ import { SettingLevelDialogComponent } from './setting-level-dialog/setting-leve
 import { VentSelectionDialogComponent } from './vent-selection-dialog/vent-selection-dialog.component';
 import {VentSelectionModule} from "../vent-selection/vent-selection.module";
 import {RouterModule} from "@angular/router";
-import {MatRippleModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -26,8 +25,7 @@ import {MatRippleModule} from "@angular/material/core";
     MatButtonModule,
     MatDialogModule,
     VentSelectionModule,
-    RouterModule,
-    MatRippleModule
+    RouterModule
   ]
 })
 export class ZoneOverviewModule {

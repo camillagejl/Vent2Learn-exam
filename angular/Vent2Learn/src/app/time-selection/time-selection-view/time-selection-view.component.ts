@@ -166,10 +166,11 @@ export class TimeSelectionViewComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate(['/zone-overview', this.userId]);
         },
         error => {
           console.log(error);
         });
+
+    this.router.navigate(['/zone-overview', this.userId]);
   }
 }
