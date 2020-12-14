@@ -63,7 +63,7 @@ exports.findOne = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Vent with id=" + id
+                message: "Error retrieving Vent with id=" + id + ": " + err
             });
         });
 
@@ -90,7 +90,7 @@ exports.update = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Vent with id=" + id
+                message: "Error updating Vent with id=" + id + ": " + err
             });
         });
 

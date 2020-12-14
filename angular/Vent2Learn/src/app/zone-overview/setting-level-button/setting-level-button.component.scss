@@ -4,6 +4,7 @@ mat-card {
   color: rgb(var(--main-color-100));
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 button {

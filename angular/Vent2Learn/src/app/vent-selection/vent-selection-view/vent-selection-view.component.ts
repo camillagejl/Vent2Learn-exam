@@ -134,12 +134,11 @@ export class VentSelectionViewComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.router.navigate(['/time-selection', this.userId]);
         },
         error => {
           console.log(error);
         });
-
-    this.router.navigate(['/time-selection', this.userId]);
 
   }
 
