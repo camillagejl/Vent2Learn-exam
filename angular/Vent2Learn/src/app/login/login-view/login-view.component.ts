@@ -87,7 +87,7 @@ export class LoginViewComponent implements OnInit {
   // with the userId of the user as parameter.
   submitForm() {
     this.users.forEach(user => {
-      if (this.userEmail === user.email && this.userPassword === user.password) {
+      if (this.userEmail.toLowerCase() === user.email.toLowerCase() && this.userPassword === user.password) {
         this.router.navigate(['/first-login', user.userId]);
       }
     })
