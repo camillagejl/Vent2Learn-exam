@@ -9,6 +9,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {BrowserModule} from "@angular/platform-browser";
 import {RouterModule} from "@angular/router";
+import {UsersService} from "../shared-services/users.service";
 
 @NgModule({
   declarations: [TimeSelectionViewComponent],
@@ -22,7 +23,8 @@ import {RouterModule} from "@angular/router";
     MatFormFieldModule,
     MatSelectModule,
     RouterModule
-  ]
+  ],
+  providers: [UsersService]
 })
 export class TimeSelectionModule {
 }

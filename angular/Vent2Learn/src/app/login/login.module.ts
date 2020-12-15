@@ -11,13 +11,11 @@ import { LoginInfoDialogComponent } from './login-info-dialog/login-info-dialog.
 import {MatDialogModule} from "@angular/material/dialog";
 import { FirstLoginViewComponent } from './first-login-view/first-login-view.component';
 import { SkippingDialogComponent } from './first-login-view/skipping-dialog/skipping-dialog.component';
+import {UsersService} from "../shared-services/users.service";
 
 
 @NgModule({
   declarations: [LoginViewComponent, LoginInfoDialogComponent, FirstLoginViewComponent, SkippingDialogComponent],
-  exports: [
-    LoginViewComponent
-  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -28,7 +26,8 @@ import { SkippingDialogComponent } from './first-login-view/skipping-dialog/skip
     MatIconModule,
     AppRoutingModule,
     MatDialogModule
-  ]
+  ],
+  providers: [UsersService]
 })
 export class LoginModule {
 }

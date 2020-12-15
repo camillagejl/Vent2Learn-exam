@@ -14,6 +14,11 @@ import { VentSelectionDialogComponent } from './vent-selection-dialog/vent-selec
 import {VentSelectionModule} from "../vent-selection/vent-selection.module";
 import {RouterModule} from "@angular/router";
 import {MatRippleModule} from "@angular/material/core";
+import {UsersService} from "../shared-services/users.service";
+import {RoomsService} from "../shared-services/rooms.service";
+import {VentsService} from "../shared-services/vents.service";
+import {PreviousRouteService} from "../shared-services/previous-route.service";
+import {AirCalculationsService} from "../shared-services/air-calculations.service";
 
 
 @NgModule({
@@ -28,7 +33,13 @@ import {MatRippleModule} from "@angular/material/core";
     VentSelectionModule,
     RouterModule,
     MatRippleModule
-  ]
+  ],
+  providers: [
+    AirCalculationsService,
+    UsersService,
+    RoomsService,
+    VentsService
+  ],
 })
 export class ZoneOverviewModule {
 }

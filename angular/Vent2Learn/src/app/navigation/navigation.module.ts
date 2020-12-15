@@ -9,11 +9,6 @@ import { TutorialBottomToolbarComponent } from './tutorial-bottom-toolbar/tutori
 
 @NgModule({
   declarations: [TopToolbarComponent, BottomToolbarComponent, TutorialBottomToolbarComponent],
-  exports: [
-    TopToolbarComponent,
-    BottomToolbarComponent,
-    TutorialBottomToolbarComponent
-  ],
   imports: [
     CommonModule,
     MatToolbarModule,

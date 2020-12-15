@@ -2,6 +2,7 @@
 
 .firebaserc
 firebase.json
+documentation
 
 # compiled output
 /dist

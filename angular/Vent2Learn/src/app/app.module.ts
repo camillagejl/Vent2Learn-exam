@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {TutorialModule} from "./learning-element/tutorial.module";
 import {LoginModule} from "./login/login.module";
-import {SharedComponentsModule} from "./shared-components/shared-components.module";
 import {VentSelectionModule} from "./vent-selection/vent-selection.module";
 import {ZoneOverviewModule} from "./zone-overview/zone-overview.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -25,7 +24,6 @@ import {AboutModule} from "./about/about.module";
     HttpClientModule,
     TutorialModule,
     LoginModule,
-    SharedComponentsModule,
     VentSelectionModule,
     ZoneOverviewModule,
     BrowserAnimationsModule,

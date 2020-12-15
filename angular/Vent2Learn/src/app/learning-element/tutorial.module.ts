@@ -14,6 +14,8 @@ import {MatCardModule} from "@angular/material/card";
 import {TutorialTask2ModalContentComponent} from "./tutorial-task1-view/tutorial-task2-modal-content/tutorial-task2-modal-content.component";
 import {TutorialTask3ModalContentComponent} from "./tutorial-task1-view/tutorial-task3-modal-content/tutorial-task3-modal-content.component";
 import {TutorialTask4ModalContentComponent} from "./tutorial-task1-view/tutorial-task4-modal-content/tutorial-task4-modal-content.component";
+import {UsersService} from "../shared-services/users.service";
+import {AirCalculationsService} from "../shared-services/air-calculations.service";
 
 @NgModule({
   declarations: [TutorialStartingViewComponent, TutorialTaskViewComponent, TutorialEndingViewComponent, TutorialTask1ModalContentComponent, TutorialTask2ModalContentComponent, TutorialTask3ModalContentComponent, TutorialTask4ModalContentComponent],
@@ -27,6 +29,9 @@ import {TutorialTask4ModalContentComponent} from "./tutorial-task1-view/tutorial
     MatSliderModule,
     FormsModule,
     MatCardModule
+  ],
+  providers: [
+    AirCalculationsService
   ]
 })
 export class TutorialModule {

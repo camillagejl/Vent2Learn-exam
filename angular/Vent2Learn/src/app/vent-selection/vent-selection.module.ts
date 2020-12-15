@@ -12,12 +12,12 @@ import {VentSelectionDropdownsComponent} from './vent-selection-dropdowns/vent-s
 import {MatDialogModule} from "@angular/material/dialog";
 import {PreviousRouteService} from "../shared-services/previous-route.service";
 import {RouterModule} from "@angular/router";
+import {UsersService} from "../shared-services/users.service";
+import {RoomsService} from "../shared-services/rooms.service";
+import {VentsService} from "../shared-services/vents.service";
 
 @NgModule({
   declarations: [VentSelectionViewComponent, VentSelectionDropdownsComponent],
-  exports: [
-    VentSelectionDropdownsComponent
-  ],
   imports: [
     CommonModule,
     MatCardModule,
@@ -30,7 +30,12 @@ import {RouterModule} from "@angular/router";
     MatDialogModule,
     RouterModule
   ],
-  providers: [PreviousRouteService],
+  providers: [
+    UsersService,
+    RoomsService,
+    VentsService,
+    PreviousRouteService
+  ],
 })
 export class VentSelectionModule {
 }
