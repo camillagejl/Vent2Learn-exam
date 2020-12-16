@@ -48,7 +48,6 @@ export class AirCalculationsService {
       roomTemperature = maxTemperature;
     }
 
-
     // Returns the final result for the roomTemperature.
     return roomTemperature;
   }

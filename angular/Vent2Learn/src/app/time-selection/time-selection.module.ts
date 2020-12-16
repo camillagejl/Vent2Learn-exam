@@ -10,6 +10,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {BrowserModule} from "@angular/platform-browser";
 import {RouterModule} from "@angular/router";
 import {UsersService} from "../shared-services/users.service";
+import {PreviousRouteService} from "../shared-services/previous-route.service";
 
 @NgModule({
   declarations: [TimeSelectionViewComponent],
@@ -24,7 +25,10 @@ import {UsersService} from "../shared-services/users.service";
     MatSelectModule,
     RouterModule
   ],
-  providers: [UsersService]
+  providers: [
+    UsersService,
+    PreviousRouteService
+  ]
 })
 export class TimeSelectionModule {
 }
