@@ -201,11 +201,11 @@ export class ZoneOverviewViewComponent implements OnInit {
               this.userHeatingLevel = user.heatingLevel;
               this.userVentilationLevel = user.ventilationLevel;
             }
-
           });
 
 
           // Goes on to calculate- and update the the zoneTemperature and zoneHumidity based on the users at the vent.
+          console.log("users:", users, "zoneUsers:", zoneUsers, "vent:", this.vent);
           this.updateAirCaulculations(zoneUsers, retrieve);
         },
         error => {

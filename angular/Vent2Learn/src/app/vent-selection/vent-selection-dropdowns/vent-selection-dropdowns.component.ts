@@ -144,18 +144,18 @@ export class VentSelectionDropdownsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+
+          if (this.lastPathClean == 'zone-overview') {
+            this.router.navigate(['/zone-overview', this.userId]);
+          }
+          else {
+            this.router.navigate(['/time-selection', this.userId]);
+          }
+
         },
         error => {
           console.log(error);
         });
-
-
-    if (this.lastPathClean == 'zone-overview') {
-      this.router.navigate(['/zone-overview', this.userId]);
-    }
-    else {
-      this.router.navigate(['/time-selection', this.userId]);
-    }
   }
 
   updateRoom() {
