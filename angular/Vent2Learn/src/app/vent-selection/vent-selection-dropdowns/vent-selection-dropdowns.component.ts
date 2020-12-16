@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -13,12 +13,11 @@ import {PreviousRouteService} from "../../shared-services/previous-route.service
   templateUrl: './vent-selection-dropdowns.component.html',
   styleUrls: ['./vent-selection-dropdowns.component.scss']
 })
+
 export class VentSelectionDropdownsComponent implements OnInit {
 
-  @Input() dialogUserId: string;
-
   userId; // Found from the URL parameter.
-  user; // The user that is logged in.
+  user; // The user that is logged in - used to get the user's settings etc.
 
   rooms; // Contains all rooms from the rooms table in the database.
   vents; // Contains all vents
@@ -54,21 +53,18 @@ export class VentSelectionDropdownsComponent implements OnInit {
     // Finds the userId parameter from the URL.
     this._route.params.subscribe(params => {
       this.userId = params["userId"];
-      if (!this.userId) {
-        this.userId = this.dialogUserId
-      }
     });
 
     // Finds the last path
     this.lastPath = this.previousRouteService.getPreviousUrl();
     this.lastPathClean = this.lastPath.split('/')[1];
-    console.log('lastPathClean', this.lastPathClean);
 
     this.filteredRooms = this.roomControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
 
+    // Retrieves all rooms and vents, so the user can choose between them in the form.
     this.retrieveRooms();
     this.retrieveVents();
 

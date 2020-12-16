@@ -2,20 +2,19 @@
   *ngIf="rooms && vents"
   [formGroup]="" class="example-form"
 >
+
   <mat-form-field
     appearance="outline"
     class="example-full-width"
   >
     <mat-label>Select room</mat-label>
     <input type="text"
-           (click)="selectedRoomName = ''"
-           aria-label="Number"
            matInput
+           (click)="selectedRoomName = ''"
            [formControl]="roomControl"
            [matAutocomplete]="auto"
            [(ngModel)]="selectedRoomName"
            (ngModelChange)="updateRoom()"
-           #selectRoom
     >
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let room of filteredRooms | async" [value]="room.roomName">
@@ -48,7 +47,10 @@
       mat-stroked-button
       class="uppercase mat-stroked-button"
       color="primary"
-      *ngIf="lastPathClean !== 'login' && lastPathClean !== 'time-selection' && lastPathClean !== 'vent-selection'"
+      *ngIf="
+        lastPathClean !== 'login'
+        && lastPathClean !== 'time-selection'
+        && lastPathClean !== 'vent-selection'"
       [routerLink]="['/' + [lastPathClean], userId]"
     >
       Back
@@ -58,15 +60,19 @@
             mat-raised-button
             class="uppercase"
             color="primary"
-            *ngIf="selectedVent && !dialogUserId"
+            *ngIf="selectedVent"
             (click)="updateUserVent()"
     >
       Next
     </button>
 
   </div>
+</form>
 
-<!-- For if we get the dialog working for selecting from ZoneOverview -->
+
+
+
+<!-- For if we get the dialog working for selecting from ZoneOverview, this goes into the end of the form -->
 <!--  <div-->
 <!--    mat-dialog-actions-->
 <!--    align="end"-->
@@ -82,5 +88,3 @@
 <!--      OK!-->
 <!--    </button>-->
 <!--  </div>-->
-
-</form>
