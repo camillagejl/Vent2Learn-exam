@@ -11,7 +11,8 @@ import { TutorialBottomToolbarComponent } from './tutorial-bottom-toolbar/tutori
   declarations: [TopToolbarComponent, BottomToolbarComponent, TutorialBottomToolbarComponent],
   exports: [
     BottomToolbarComponent,
-    TutorialBottomToolbarComponent
+    TutorialBottomToolbarComponent,
+    TopToolbarComponent
   ],
   imports: [
     CommonModule,
