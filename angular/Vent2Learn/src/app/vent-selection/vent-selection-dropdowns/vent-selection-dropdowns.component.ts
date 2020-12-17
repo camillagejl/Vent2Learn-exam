@@ -110,12 +110,13 @@ export class VentSelectionDropdownsComponent implements OnInit {
         data => {
           this.user = data;
 
-          // This sets the selectedVent as the ventId the user has in the database. However, this will return to null
-          // when the selectedRoom is changed because of the onModelChange on the room dropdown in the HTML.
+          // This sets the selectedVent as the ventId the user has in the database.
+          // However, this will return to null when the selectedRoom is changed
+          // because of the onModelChange on the room dropdown in the HTML.
           this.selectedVent = this.user.ventId;
 
-          // Loops over the vents to find the vent the user is/was at, and sets the selectedRoom from the roomId from
-          // the vent.
+          // Loops over the vents to find the vent the user is/was at, and sets the
+          // selectedRoom from the roomId from the vent.
           if (this.vents) {
             this.vents.forEach(vent => {
               if (vent.ventId === this.selectedVent) {
@@ -129,14 +130,14 @@ export class VentSelectionDropdownsComponent implements OnInit {
               }
             });
           }
-
         },
         error => {
           console.log(error);
         });
   }
 
-  // Updates the vent for the user in the database, and sends the user to the next page with the userId as parameter.
+  // Updates the vent for the user in the database, and sends the user to the next
+  // page with the userId as parameter.
   updateUserVent() {
     this.usersService.update(this.userId, {
       ventId: this.selectedVent
@@ -147,11 +148,9 @@ export class VentSelectionDropdownsComponent implements OnInit {
 
           if (this.lastPathClean == 'zone-overview') {
             this.router.navigate(['/zone-overview', this.userId]);
-          }
-          else {
+          } else {
             this.router.navigate(['/time-selection', this.userId]);
           }
-
         },
         error => {
           console.log(error);
